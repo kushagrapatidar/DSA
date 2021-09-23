@@ -21,9 +21,25 @@ def setend(r,c,maze):
 
 def reset(maze):
     return maze
+
+def findpath(prev,curr,path,maze): 
+    return path
 #Driver Code
-start=input('Enter the source:')
-end=input('Enter the end:')
+r_n_c=input('Enter the number of rows and columns: ')
+[r,c]=r_n_c.split()
+maze=Maze(r,c)
+walls=input('Enter the wall indices:')
+wall_list=walls.split(',')
+for i in range(len(wall_list)):
+    wall_list[i]=wall_list[i].split(',')
+    for j in range(wall_list[i]):
+        wall_list[i][j]=wall_list[i][j]#Continue from here"(num","num)"
+setwall(wall_list)
+start=input('Enter the source: ')
+end=input('Enter the end: ')
 [si,sj]=start.split()
 [ei,ej]=end.split()
+setstart(si,sj,maze)
+setend(ei,ej,maze)
 path=[]
+path=findpath((si,sj),(ei,ej),path,maze)
