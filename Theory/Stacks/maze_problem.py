@@ -95,7 +95,7 @@ if True:
         maze=setwall(wall_list, maze)
         print_maze(maze)
 
-        #Find Path
+        #Find Path #CONTINUE HERE
         #path=[]
         #path=findpath((si,sj),(ei,ej),path,maze)
 
