@@ -1,105 +1,42 @@
-#Experiment: 15
-def make_words(arr):
-    words=list()
-    word=""
-    
-    #For first word
-    for _ in arr:
-        if 0<_<27:
-            word+=chr(_+64)
-        else:
-            word+=str(_)
-    words.append(word)
-
-    for i in range(len(arr)):
-        word=""
-        combination=[]
-        combination1=[]
-
-        #For creating word from numbers before i in arr 
-        for _ in range(i):
-            if 0<arr[_]<27:
-                combination.append(chr(arr[_]+64))
-            else:
-                combination.append(str(arr[_]))
-            
-
-        while i<len(arr):
-            j=i+1
-            if i==len(arr)-1: #If the last element in arr 
-                if 0<arr[i]<27:
-                    combination.append(chr(arr[i]+64))
-                else:
-                    combination.append(str(arr[i]))
-                i+=1
-                  
-
-            elif 0<arr[i]*10+arr[j]<27 and 0<arr[j]<10: #If Valid Pair
-                temp=combination.copy()
-                combination.append(chr(arr[i]*10+arr[j]+64))
-                if j>3: 
-                    combination1=temp.copy()                           #Making another parallel combination
-                    combination1.append(chr(arr[i]+64)+chr(arr[j]+64))  
-                i+=2
-                
-            
-            elif 0<arr[j]<10: #If the pair is Invalid
-                if 0<arr[i]<27:
-                   combination.append(chr(arr[i]+64))
-                else:
-                    combination.append(str(arr[i]))
-                i+=1 
-            
-            else:
-                if 0<arr[i]<27:   #If curr element is valid number
-                    combination.append(chr(arr[i]+64))
-                else:
-                    combination.append(str(arr[i]))
-
-                if 0<arr[j]<27: #If next element is valid number
-                    combination.append(chr(arr[j]+64))
-                else:
-                    combination.append(str(arr[j]))
-                i+=2
-
-        #Creating the words
-        #print(combination)
-        for _ in combination:
-            word+=_
-        words.append(word)
+#Experiment: 09
+def MaxMin(arr,lb,ub,max,min):
+    if lb==ub: #If there is a single element in the Partition
         
-        word=""
-        #print(combination1)
-        for _ in combination1:
-            word+=_
-        words.append(word)
+        max=min=arr[lb] #Assign the element as both 
     
-    words.sort() #Arranging the same words together
-    #print(words)
-    
-    #Creating a cleaned word list
-    wordlst=list()
-    for i in range(len(words)):
-        if i==len(words)-1:
-            wordlst.append(words[i])
-        elif words[i]!=words[i+1]:
-            wordlst.append(words[i])
-    return wordlst
+    elif lb==ub-1: #If there are only two elements in the Partition
+        
+        #Compare and assign Maximum and Minimun to max and min
+        if arr[lb]<arr[ub]:
+            max=arr[ub]
+            min=arr[lb]
+        else:
+            max=arr[lb]
+            min=arr[ub]
 
-def print_words(words):
-    words=words[1:]
-    for word in words:
-        print(word)
+    #If there are more than 2 elements in the Partition
+    else:
+        mid=(lb+ub)//2 #Assign the middle index as the mid value of Ub and Lb
+        
+        #min1 and max1 initializationion
+        max1=0
+        min1=0
+        
+        #Recursive call for finding Maximum and Minimum for both the partitions before and after the middle index
+        max,min=MaxMin(arr,lb,mid,max,min)
+        max1,min1=MaxMin(arr,mid+1,ub,max1,min1)
+        
+        #Compare the max and min from both the Partitions to obtain Maximum and Minimum
+        if max<max1:
+            max=max1
+        if min>min1:
+            min=min1
+    
+    return max,min
 
 #Driver Code
-if True:
-    #Test Cases
-    arr=[1,2,2]
-    #arr=[1,2,2,1]
-    #arr=[1,15,2,1]
-    #arr=[1,29,2,1]
-    #arr=[1,2,2,27,1,2]
-    #arr=[1,29,2,2,27,1,2]
-
-    words=make_words(arr)
-    print_words(words)
+arr=[7,6,5,9,2,1,15,10,25,7]
+Max=0
+Min=0
+Max,Min=MaxMin(arr,0,len(arr)-1,Max,Min)
+print("Maximum:",Max,"\nMinimum:",Min)
