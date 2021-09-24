@@ -82,6 +82,10 @@ def findpath(curr_i,curr_j,path,maze):
                 path=findpath(curr_i,curr_j,maze,path)
         return path
 
+#Function to color the starting & ending points, walls and spaces accordingly
+def colored(r, g, b, text):
+    return "\033[38;2;{};{};{}m{} \033[38;2;255;255;255m".format(r, g, b, text)
+
 #Driver Code
 if True:
 
@@ -125,9 +129,9 @@ if True:
         for i in range(len(wall_list)):
             wall_list[i]=int(wall_list[i])
         maze=setwall(wall_list, maze)
-        #print(np.array(maze))
+        print(np.array(maze))
 
-    #Find Path
+    '''#Find Path
         for _ in range(len(maze)):
             for _2 in range(len(maze[_])):
                 if _2+_*r==start:
@@ -145,14 +149,26 @@ if True:
                         continue
                     else:
                      maze[_2][_]='X'
-            print(np.array(maze))
+            
+            for _ in range(len(maze)):
+                for _2 in range(len(maze[_])):
+                    if maze[_][_2]=='0':
+                        print(colored(255, 255, 255, maze[_][_2]),end="")                     
+                    elif maze[_][_2]=='S' or maze[_][_2]=='E':
+                        print(colored(255, 255, 0, maze[_][_2]),end="")
+                    elif maze[_][_2]=='X':
+                        print(colored(0, 255, 255, maze[_][_2]),end="")
+                    else:
+                        print(colored(0, 0, 0, maze[_][_2]),end="")
+                print("\n")
+                     
         else:
             print("No path found for the given configuration!!\n")
             print("Resetting the maze...")
         #Reset Maze
             maze=reset(start,end,wall_list,maze)
             print(np.array(maze))
-    
+    '''
     
 #Maze 1
     #Maze Shape: 7x7
