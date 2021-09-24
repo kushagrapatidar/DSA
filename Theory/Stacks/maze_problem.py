@@ -1,5 +1,5 @@
 import numpy as np
-boundries=list()
+
 #Function to create a Maze
 def Maze(r,c):
     maze=list()
@@ -48,15 +48,14 @@ def reset(start,end,lst,maze):
 
 #Function to find path in the Maze #CONTINUE HERE
 def findpath(curr_i,curr_j,path,maze):
-    if 0<=curr_i<len(maze) and 0<=curr_j<len(maze[curr_i]):
-        
+    if 0<=curr_i<len(maze) and 0<=curr_j<len(maze[curr_i]):  
         if maze[curr_j][curr_i]=='S':
             path.append((curr_i,curr_j))
 
         if maze[curr_j][curr_i]=='E':
             path.append((curr_i,curr_j))
 
-        if 0<=curr_i<len(maze) and 0<=curr_j<len(maze[curr_i]):
+        if 0<curr_i<len(maze)-1 and 0<curr_j<len(maze[curr_i])-1:
 
             if maze[curr_j-1][curr_i]==1:
                 maze[curr_j-1][curr_i]="X"
@@ -78,12 +77,14 @@ def findpath(curr_i,curr_j,path,maze):
                 path.append((curr_i+1,curr_j))
                 path=findpath(curr_i+1,curr_j,maze,path)
             else:
+                maze[curr_j][curr_i]='O'
                 (curr_i,curr_j)=path.pop()
                 path=findpath(curr_i,curr_j,maze,path)
         return path
 
 #Driver Code
 if True:
+
     #Genrate a maze
     r_n_c=input('Enter the number of rows and columns: (Format: rows,columns)\n')
     [r,c]=r_n_c.split(',')
@@ -96,6 +97,7 @@ if True:
     end=input(f'Enter the End index in range 0 to {r*c-1} except '+start+':\n')
 
     #Creating a list of boundry elements
+    boundries=list()
     for i in range(len(maze)):
         if i==0 or i==c-1:
             j=0
@@ -134,6 +136,7 @@ if True:
         path=list()
         path=findpath(start_i,start_j,path,maze)
         
+    #Print the solved Maze or reset if no path found
         (i,j)=path[len(path)-1]
         if maze[j][i]=='E':          
             for _ in range(len(maze)):
