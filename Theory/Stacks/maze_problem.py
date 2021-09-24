@@ -1,4 +1,5 @@
 import numpy as np
+boundries=list()
 #Function to create a Maze
 def Maze(r,c):
     maze=list()
@@ -61,7 +62,8 @@ if True:
     #Taking input of start and end
     start=input(f'Enter the Start index in range 0 to {r*c-1}:\n')
     end=input(f'Enter the End index in range 0 to {r*c-1} except '+start+':\n')
-    boundries=list()
+
+    #Creating a list of boundry elements
     for i in range(len(maze)):
         if i==0 or i==c-1:
             j=0
