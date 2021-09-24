@@ -107,7 +107,21 @@ if True:
     [r,c]=r_n_c.split(',')
     r,c=int(r),int(c)
     maze=make_maze(r,c)
-    #print(np.array(maze))
+    '''
+    print("\n")
+    for _ in range(len(maze)):
+        for _2 in range(len(maze[_])):
+            if maze[_][_2]==0:
+                print(colored(150, 150, 150, '\u25C6 '),end="")              #'\u25C6' is unicode for filled diamond       
+            elif maze[_][_2]=='S' or maze[_][_2]=='E':
+                print(colored(0, 255, 255, maze[_][_2]+' '),end="")
+            elif maze[_][_2]=='X':
+                print(colored(255, 255, 0, '\u2022 '),end="")                #'\u2022' is unicode for bullet
+            else:
+                print(colored(0, 0, 0, '  '),end="")
+        print("\n")
+    print("\n")
+    '''
 
     #Taking input of start and end
     start=input(f'Enter the Start index in range 0 to {r*c-1}:\n')
@@ -147,11 +161,11 @@ if True:
         for _ in range(len(maze)):
             for _2 in range(len(maze[_])):
                 if maze[_][_2]==0:
-                    print(colored(150, 150, 150, '\u25C6 '),end="")                     
+                    print(colored(150, 150, 150, '\u25C6 '),end="")              #'\u25C6' is unicode for filled diamond       
                 elif maze[_][_2]=='S' or maze[_][_2]=='E':
                     print(colored(0, 255, 255, maze[_][_2]+' '),end="")
                 elif maze[_][_2]=='X':
-                    print(colored(255, 255, 0, '\u2022 '),end="")
+                    print(colored(255, 255, 0, '\u2022 '),end="")                #'\u2022' is unicode for bullet
                 else:
                     print(colored(0, 0, 0, '  '),end="")
             print("\n")
@@ -182,11 +196,11 @@ if True:
             for _ in range(len(maze)):
                 for _2 in range(len(maze[_])):
                     if maze[_][_2]==0:
-                        print(colored(150, 150, 150, '\u25C6 '),end="")                     
+                        print(colored(150, 150, 150, '\u25C6 '),end="")          #'\u25C6' is unicode for filled diamond           
                     elif maze[_][_2]=='S' or maze[_][_2]=='E':
                         print(colored(0, 255, 255, maze[_][_2]+' '),end="")
                     elif maze[_][_2]=='X':
-                        print(colored(255, 255, 0, '\u2022 '),end="")
+                        print(colored(255, 255, 0, '\u2022 '),end="")            #'\u2022' is unicode for bullet
                     else:
                         print(colored(0, 0, 0, '  '),end="")
                 print("\n")
