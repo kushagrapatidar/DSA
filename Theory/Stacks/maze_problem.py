@@ -56,7 +56,7 @@ def findpath(curr_i,curr_j,path,maze):
             path+=[curr_i,curr_j]
     
     if 0==curr_i or curr_i==len(maze)-1 or 0==curr_j or curr_j==len(maze[curr_i])-1: #CONTINUE HERE
-                return path
+        return path
     
     if 0<curr_i<len(maze)-1 and 0<curr_j<len(maze[curr_i])-1:
 
@@ -80,11 +80,11 @@ def findpath(curr_i,curr_j,path,maze):
             path+=[curr_i+1,curr_j]
             path=findpath(curr_i+1,curr_j,maze,path)
         
-    else:
-        maze[curr_j][curr_i]='O'
-        path-=[curr_i,curr_j]
-        [curr_i,curr_j]=path[len(path)-1]
-        path=findpath(curr_i,curr_j,maze,path)    
+        else:
+            maze[curr_j][curr_i]='O'
+            path-=[curr_i,curr_j]
+            [curr_i,curr_j]=path[len(path)-1]
+            path=findpath(curr_i,curr_j,maze,path)    
         
     return path
 
