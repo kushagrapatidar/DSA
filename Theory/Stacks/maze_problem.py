@@ -147,6 +147,7 @@ if True:
             print("No path found for the given configuration!!\n")
             print("Resetting the maze...")
         #Reset Maze
+            maze=reset(start,end,wall_list,maze)
             print(np.array(maze))
     
     
