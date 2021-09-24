@@ -55,10 +55,10 @@ def findpath(curr_i,curr_j,path,maze):
         if maze[curr_j][curr_i]=='E':
             path+=[curr_i,curr_j]
     
-    if 1==curr_i or curr_i==len(maze)-2 or 1==curr_j or curr_j==len(maze[curr_i])-2: #CONTINUE HERE
+    if 0==curr_i or curr_i==len(maze)-1 or 0==curr_j or curr_j==len(maze[curr_i])-1: #CONTINUE HERE
         return path
     
-    if 1<curr_i<len(maze)-2 and 1<curr_j<len(maze[curr_i])-2:
+    if 0<curr_i<len(maze)-1 and 0<curr_j<len(maze[curr_i])-1:
 
         if maze[curr_j-1][curr_i]==1:
             maze[curr_j-1][curr_i]="X"
