@@ -55,36 +55,43 @@ def findpath(curr_i,curr_j,path,maze):
         if maze[curr_j][curr_i]=='E':
             path+=[curr_i,curr_j]
     
-    if 0==curr_i or curr_i==len(maze)-1 or 0==curr_j or curr_j==len(maze[curr_i])-1: #CONTINUE HERE
-        return path
+        elif 0==curr_i or curr_i==len(maze)-1 or 0==curr_j or curr_j==len(maze[curr_i])-1: #CONTINUE HERE
+            if 0==curr_i or curr_i==len(maze)-1 and (0!=curr_j and curr_j!=len(maze[curr_i])-1):
+                if 0==curr_i:
+                    print("")
+                elif curr_i==len(maze)-1:
+                    print("")
+            elif (0!=curr_i and curr_i!=len(maze)-1) and 0==curr_j or curr_j==len(maze[curr_i])-1:
+                print("")
+            return path
     
-    if 0<curr_i<len(maze)-1 and 0<curr_j<len(maze[curr_i])-1:
+        elif 0<curr_i<len(maze)-1 and 0<curr_j<len(maze[curr_i])-1:
 
-        if maze[curr_j-1][curr_i]==1:
-            maze[curr_j-1][curr_i]="X"
-            path+=[curr_i,curr_j-1]
-            path=findpath(curr_i,curr_j-1,maze,path)
+            if maze[curr_j-1][curr_i]==1:
+                maze[curr_j-1][curr_i]="X"
+                path+=[curr_i,curr_j-1]
+                path=findpath(curr_i,curr_j-1,maze,path)
 
-        elif maze[curr_j+1][curr_i]==1:
-            maze[curr_j+1][curr_i]="X"
-            path+=[curr_i,curr_j+1]
-            path=findpath(curr_i,curr_j+1,maze,path)
+            elif maze[curr_j+1][curr_i]==1:
+                maze[curr_j+1][curr_i]="X"
+                path+=[curr_i,curr_j+1]
+                path=findpath(curr_i,curr_j+1,maze,path)
 
-        elif maze[curr_j][curr_i-1]==1:
-            maze[curr_j][curr_i-1]="X"
-            path+=[curr_i-1,curr_j]
-            path=findpath(curr_i-1,curr_j,maze,path)
+            elif maze[curr_j][curr_i-1]==1:
+                maze[curr_j][curr_i-1]="X"
+                path+=[curr_i-1,curr_j]
+                path=findpath(curr_i-1,curr_j,maze,path)
 
-        elif maze[curr_j][curr_i+1]==1:
-            maze[curr_j][curr_i+1]="X"
-            path+=[curr_i+1,curr_j]
-            path=findpath(curr_i+1,curr_j,maze,path)
+            elif maze[curr_j][curr_i+1]==1:
+                maze[curr_j][curr_i+1]="X"
+                path+=[curr_i+1,curr_j]
+                path=findpath(curr_i+1,curr_j,maze,path)
         
-        else:
-            maze[curr_j][curr_i]='O'
-            path-=[curr_i,curr_j]
-            [curr_i,curr_j]=path[len(path)-1]
-            path=findpath(curr_i,curr_j,maze,path)    
+            else:
+                maze[curr_j][curr_i]='O'
+                path-=[curr_i,curr_j]
+                [curr_i,curr_j]=path[len(path)-1]
+                path=findpath(curr_i,curr_j,maze,path)    
         
     return path
 
