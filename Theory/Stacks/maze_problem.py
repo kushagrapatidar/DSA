@@ -1,7 +1,7 @@
 import numpy as np
 
 #Function to create a Maze
-def Maze(r,c):
+def make_maze(r,c):
     maze=list()
     for _ in range(c):
         row=list()
@@ -40,47 +40,51 @@ def setend(end,maze):
 
 #Function to reset the Maze to the initial state
 def reset(start,end,lst,maze):
-    maze=Maze(len(maze),len(maze[0]))
+    maze=make_maze(len(maze),len(maze[0]))
     maze=setstart(start,maze)
     maze=setend(end,maze)
     maze=setwall(lst,maze)
     return maze
 
-#Function to find path in the Maze #CONTINUE HERE
+#Function to find path in the Maze 
 def findpath(curr_i,curr_j,path,maze):
     if 0<=curr_i<len(maze) and 0<=curr_j<len(maze[curr_i]):  
         if maze[curr_j][curr_i]=='S':
-            path.append((curr_i,curr_j))
+            path+=[curr_i,curr_j]
         
         if maze[curr_j][curr_i]=='E':
-            path.append((curr_i,curr_j))
-
+            path+=[curr_i,curr_j]
+    
+    if 0==curr_i or curr_i==len(maze)-1 or 0==curr_j or curr_j==len(maze[curr_i])-1: #CONTINUE HERE
+                return path
+    
     if 0<curr_i<len(maze)-1 and 0<curr_j<len(maze[curr_i])-1:
 
         if maze[curr_j-1][curr_i]==1:
             maze[curr_j-1][curr_i]="X"
-            path.append((curr_i,curr_j-1))
+            path+=[curr_i,curr_j-1]
             path=findpath(curr_i,curr_j-1,maze,path)
 
         elif maze[curr_j+1][curr_i]==1:
             maze[curr_j+1][curr_i]="X"
-            path.append((curr_i,curr_j+1))
+            path+=[curr_i,curr_j+1]
             path=findpath(curr_i,curr_j+1,maze,path)
 
         elif maze[curr_j][curr_i-1]==1:
             maze[curr_j][curr_i-1]="X"
-            path.append((curr_i-1,curr_j))
+            path+=[curr_i-1,curr_j]
             path=findpath(curr_i-1,curr_j,maze,path)
 
         elif maze[curr_j][curr_i+1]==1:
             maze[curr_j][curr_i+1]="X"
-            path.append((curr_i+1,curr_j))
+            path+=[curr_i+1,curr_j]
             path=findpath(curr_i+1,curr_j,maze,path)
-        else:
-            maze[curr_j][curr_i]='O'
-            (curr_i,curr_j)=path.pop()
-            path=findpath(curr_i,curr_j,maze,path)
         
+    else:
+        maze[curr_j][curr_i]='O'
+        path-=[curr_i,curr_j]
+        [curr_i,curr_j]=path[len(path)-1]
+        path=findpath(curr_i,curr_j,maze,path)    
         
     return path
 
@@ -95,7 +99,7 @@ if True:
     r_n_c=input('Enter the number of rows and columns: (Format: rows,columns)\n')
     [r,c]=r_n_c.split(',')
     r,c=int(r),int(c)
-    maze=Maze(r,c)
+    maze=make_maze(r,c)
     #print(np.array(maze))
 
     #Taking input of start and end
