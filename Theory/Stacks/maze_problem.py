@@ -51,36 +51,38 @@ def findpath(curr_i,curr_j,path,maze):
     if 0<=curr_i<len(maze) and 0<=curr_j<len(maze[curr_i]):  
         if maze[curr_j][curr_i]=='S':
             path.append((curr_i,curr_j))
-
+        
         if maze[curr_j][curr_i]=='E':
             path.append((curr_i,curr_j))
 
-        if 0<curr_i<len(maze)-1 and 0<curr_j<len(maze[curr_i])-1:
+    if 0<curr_i<len(maze)-1 and 0<curr_j<len(maze[curr_i])-1:
 
-            if maze[curr_j-1][curr_i]==1:
-                maze[curr_j-1][curr_i]="X"
-                path.append((curr_i,curr_j-1))
-                path=findpath(curr_i,curr_j-1,maze,path)
+        if maze[curr_j-1][curr_i]==1:
+            maze[curr_j-1][curr_i]="X"
+            path.append((curr_i,curr_j-1))
+            path=findpath(curr_i,curr_j-1,maze,path)
 
-            if maze[curr_j+1][curr_i]==1:
-                maze[curr_j+1][curr_i]="X"
-                path.append((curr_i,curr_j+1))
-                path=findpath(curr_i,curr_j+1,maze,path)
+        elif maze[curr_j+1][curr_i]==1:
+            maze[curr_j+1][curr_i]="X"
+            path.append((curr_i,curr_j+1))
+            path=findpath(curr_i,curr_j+1,maze,path)
 
-            if maze[curr_j][curr_i-1]==1:
-                maze[curr_j][curr_i-1]="X"
-                path.append((curr_i-1,curr_j))
-                path=findpath(curr_i-1,curr_j,maze,path)
+        elif maze[curr_j][curr_i-1]==1:
+            maze[curr_j][curr_i-1]="X"
+            path.append((curr_i-1,curr_j))
+            path=findpath(curr_i-1,curr_j,maze,path)
 
-            if maze[curr_j][curr_i+1]==1:
-                maze[curr_j][curr_i+1]="X"
-                path.append((curr_i+1,curr_j))
-                path=findpath(curr_i+1,curr_j,maze,path)
-            else:
-                maze[curr_j][curr_i]='O'
-                (curr_i,curr_j)=path.pop()
-                path=findpath(curr_i,curr_j,maze,path)
-        return path
+        elif maze[curr_j][curr_i+1]==1:
+            maze[curr_j][curr_i+1]="X"
+            path.append((curr_i+1,curr_j))
+            path=findpath(curr_i+1,curr_j,maze,path)
+        else:
+            maze[curr_j][curr_i]='O'
+            (curr_i,curr_j)=path.pop()
+            path=findpath(curr_i,curr_j,maze,path)
+        
+        
+    return path
 
 #Function to color the starting & ending points, walls and spaces accordingly
 def colored(r, g, b, text):
@@ -129,21 +131,24 @@ if True:
         for i in range(len(wall_list)):
             wall_list[i]=int(wall_list[i])
         maze=setwall(wall_list, maze)
-        '''print("\n")
+        '''
+        print("\n")
         for _ in range(len(maze)):
             for _2 in range(len(maze[_])):
                 if maze[_][_2]==0:
-                    print(colored(150, 150, 150, '\u25C6'),end="")                     
+                    print(colored(150, 150, 150, '\u25C6 '),end="")                     
                 elif maze[_][_2]=='S' or maze[_][_2]=='E':
-                    print(colored(0, 255, 255, maze[_][_2]),end="")
+                    print(colored(0, 255, 255, maze[_][_2]+' '),end="")
                 elif maze[_][_2]=='X':
-                    print(colored(255, 255, 0, '\u2022'),end="")
+                    print(colored(255, 255, 0, '\u2022 '),end="")
                 else:
-                    print(colored(0, 0, 0, ' '),end="")
-            print("\r")
-        print("\n")'''
+                    print(colored(0, 0, 0, '  '),end="")
+            print("\n")
+        print("\n")
+        '''
 
-    #Find Path
+    #'''
+    #Find Path 
         for _ in range(len(maze)):
             for _2 in range(len(maze[_])):
                 if _2+_*r==start:
@@ -157,7 +162,7 @@ if True:
         if maze[j][i]=='E':          
             for _ in range(len(maze)):
                 for _2 in range(len(maze[_])):
-                    if (_,_2)not in path:
+                    if (_,_2) not in path:
                         continue
                     else:
                      maze[_2][_]='X'
@@ -166,14 +171,14 @@ if True:
             for _ in range(len(maze)):
                 for _2 in range(len(maze[_])):
                     if maze[_][_2]==0:
-                        print(colored(150, 150, 150, '\u25C6'),end="")                     
+                        print(colored(150, 150, 150, '\u25C6 '),end="")                     
                     elif maze[_][_2]=='S' or maze[_][_2]=='E':
-                        print(colored(0, 255, 255, maze[_][_2]),end="")
+                        print(colored(0, 255, 255, maze[_][_2]+' '),end="")
                     elif maze[_][_2]=='X':
-                        print(colored(255, 255, 0, '\u2022'),end="")
+                        print(colored(255, 255, 0, '\u2022 '),end="")
                     else:
-                        print(colored(0, 0, 0, ' '),end="")
-                print("\r")
+                        print(colored(0, 0, 0, '  '),end="")
+                print("\n")
             print("\n")
                      
         else:
@@ -181,6 +186,7 @@ if True:
             print("Resetting the maze...")
         #Reset Maze
             maze=reset(start,end,wall_list,maze)
+    #'''
     
 #Maze 1
     #Maze Shape: 7x7
