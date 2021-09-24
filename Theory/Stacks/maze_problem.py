@@ -46,9 +46,41 @@ def reset(start,end,lst,maze):
     maze=setwall(lst,maze)
     return maze
 
-#Function to find path in the Maze
-def findpath(prev,curr,path,maze): 
-    return path
+#Function to find path in the Maze #CONTINUE HERE
+def findpath(curr_i,curr_j,path,maze):
+    if 0<=curr_i<len(maze) and 0<=curr_j<len(maze[curr_i]):
+        
+        if maze[curr_j][curr_i]=='S':
+            path.append((curr_i,curr_j))
+
+        if maze[curr_j][curr_i]=='E':
+            path.append((curr_i,curr_j))
+
+        if 0<=curr_i<len(maze) and 0<=curr_j<len(maze[curr_i]):
+
+            if maze[curr_j-1][curr_i]==1:
+                maze[curr_j-1][curr_i]="X"
+                path.append((curr_i,curr_j-1))
+                path=findpath(curr_i,curr_j-1,maze,path)
+
+            if maze[curr_j+1][curr_i]==1:
+                maze[curr_j+1][curr_i]="X"
+                path.append((curr_i,curr_j+1))
+                path=findpath(curr_i,curr_j+1,maze,path)
+
+            if maze[curr_j][curr_i-1]==1:
+                maze[curr_j][curr_i-1]="X"
+                path.append((curr_i-1,curr_j))
+                path=findpath(curr_i-1,curr_j,maze,path)
+
+            if maze[curr_j][curr_i+1]==1:
+                maze[curr_j][curr_i+1]="X"
+                path.append((curr_i+1,curr_j))
+                path=findpath(curr_i+1,curr_j,maze,path)
+            else:
+                (curr_i,curr_j)=path.pop()
+                path=findpath(curr_i,curr_j,maze,path)
+        return path
 
 #Driver Code
 if True:
@@ -57,7 +89,7 @@ if True:
     [r,c]=r_n_c.split(',')
     r,c=int(r),int(c)
     maze=Maze(r,c)
-    print(np.array(maze))
+    #print(np.array(maze))
 
     #Taking input of start and end
     start=input(f'Enter the Start index in range 0 to {r*c-1}:\n')
@@ -91,16 +123,31 @@ if True:
         for i in range(len(wall_list)):
             wall_list[i]=int(wall_list[i])
         maze=setwall(wall_list, maze)
-        print(np.array(maze))
+        #print(np.array(maze))
 
-    #Find Path #CONTINUE HERE
-        #path=[]
-        #path=findpath(start,path,maze)
-
-    #Reset Maze
-        #if path==-1:
-            #maze=reset(start,start,end,wall_list,maze)
-            #print_maze(np.array(maze))
+    #Find Path
+        for _ in range(len(maze)):
+            for _2 in range(len(maze[_])):
+                if _2+_*r==start:
+                    start_i=_
+                    start_j=_2
+        path=list()
+        path=findpath(start_i,start_j,path,maze)
+        
+        (i,j)=path[len(path)-1]
+        if maze[j][i]=='E':          
+            for _ in range(len(maze)):
+                for _2 in range(len(maze[_])):
+                    if (_,_2)not in path:
+                        continue
+                    else:
+                     maze[_2][_]='X'
+            print(np.array(maze))
+        else:
+            print("No path found for the given configuration!!\n")
+            print("Resetting the maze...")
+        #Reset Maze
+            print(np.array(maze))
     
     
 #Maze 1
