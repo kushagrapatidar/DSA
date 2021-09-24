@@ -169,7 +169,7 @@ if True:
             maze=reset(start,end,wall_list,maze)
             print(np.array(maze))
     '''
-     
+    
 #Maze 1
     #Maze Shape: 7x7
     #Walls: 0,1,2,3,4,5,6,7,13,14,15,16,18,21,23,25,27,28,32,33,34,35,37,41,42,44,45,46,47,48
