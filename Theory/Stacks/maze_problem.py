@@ -129,9 +129,21 @@ if True:
         for i in range(len(wall_list)):
             wall_list[i]=int(wall_list[i])
         maze=setwall(wall_list, maze)
-        print(np.array(maze))
+        '''print("\n")
+        for _ in range(len(maze)):
+            for _2 in range(len(maze[_])):
+                if maze[_][_2]==0:
+                    print(colored(150, 150, 150, '\u25C6'),end="")                     
+                elif maze[_][_2]=='S' or maze[_][_2]=='E':
+                    print(colored(0, 255, 255, maze[_][_2]),end="")
+                elif maze[_][_2]=='X':
+                    print(colored(255, 255, 0, '\u2022'),end="")
+                else:
+                    print(colored(0, 0, 0, ' '),end="")
+            print("\r")
+        print("\n")'''
 
-    '''#Find Path
+    #Find Path
         for _ in range(len(maze)):
             for _2 in range(len(maze[_])):
                 if _2+_*r==start:
@@ -150,28 +162,34 @@ if True:
                     else:
                      maze[_2][_]='X'
             
+            print("\n")
             for _ in range(len(maze)):
                 for _2 in range(len(maze[_])):
-                    if maze[_][_2]=='0':
-                        print(colored(255, 255, 255, maze[_][_2]),end="")                     
+                    if maze[_][_2]==0:
+                        print(colored(150, 150, 150, '\u25C6'),end="")                     
                     elif maze[_][_2]=='S' or maze[_][_2]=='E':
-                        print(colored(255, 255, 0, maze[_][_2]),end="")
-                    elif maze[_][_2]=='X':
                         print(colored(0, 255, 255, maze[_][_2]),end="")
+                    elif maze[_][_2]=='X':
+                        print(colored(255, 255, 0, '\u2022'),end="")
                     else:
-                        print(colored(0, 0, 0, maze[_][_2]),end="")
-                print("\n")
+                        print(colored(0, 0, 0, ' '),end="")
+                print("\r")
+            print("\n")
                      
         else:
             print("No path found for the given configuration!!\n")
             print("Resetting the maze...")
         #Reset Maze
             maze=reset(start,end,wall_list,maze)
-            print(np.array(maze))
-    '''
     
 #Maze 1
     #Maze Shape: 7x7
     #Walls: 0,1,2,3,4,5,6,7,13,14,15,16,18,21,23,25,27,28,32,33,34,35,37,41,42,44,45,46,47,48
     #Start: 43
     #End: 20
+
+#Maze 2
+    #Maze Shape: 10x10
+    #Walls: 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,36,40,41,42,44,46,48,50,51,52,56,58,63,64,69,70,71,73,74,76,77,80,81,86,87,88,89,90,91,92,93,94,95,96,97,98,99
+    #Start: 30
+    #End: 79
