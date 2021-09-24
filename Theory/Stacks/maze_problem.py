@@ -1,3 +1,4 @@
+import numpy as np
 #Function to create a Maze
 def Maze(r,c):
     maze=list()
@@ -48,11 +49,6 @@ def reset(start,end,lst,maze):
 def findpath(prev,curr,path,maze): 
     return path
 
-#Function to print Maze
-def print_maze(maze):
-    for _ in maze:
-        print(_)
-
 #Driver Code
 if True:
     #Genrate a maze
@@ -60,7 +56,7 @@ if True:
     [r,c]=r_n_c.split(',')
     r,c=int(r),int(c)
     maze=Maze(r,c)
-    print_maze(maze)
+    print(np.array(maze))
 
     #Taking input of start and end
     start=input(f'Enter the Start index in range 0 to {r*c-1}:\n')
@@ -75,33 +71,34 @@ if True:
         else:
             boundries.append(i+0)
             boundries.append(i+(r-1)*c)
-    #print(boundries)
+
 
     if start==end and start not in boundries and end not in boundries:
         print('Start and End cannot be placed at the given indices!!')
     else:
-        #Setting Starting and Ending points
+    #Setting Starting and Ending points
         start=int(start)
         end=int(end)
         maze=setstart(start,maze)
         maze=setend(end,maze)
 
-        #Put Walls
+    #Put Walls
         walls=input(f'Enter the wall indices in range 0 to {r*c-1} except {start,end}: (Format 0,1,2,...)\n')
         wall_list=walls.split(',')
-        #print(wall_list)
+
         for i in range(len(wall_list)):
             wall_list[i]=int(wall_list[i])
         maze=setwall(wall_list, maze)
-        print_maze(maze)
+        print(np.array(maze))
 
-        #Find Path #CONTINUE HERE
+    #Find Path #CONTINUE HERE
         #path=[]
-        #path=findpath((si,sj),(ei,ej),path,maze)
+        #path=findpath(start,path,maze)
 
-        #Reset Maze
-        #maze=reset(start,end,wall_list,maze)
-        #print_maze(maze)
+    #Reset Maze
+        #if path==-1:
+            #maze=reset(start,start,end,wall_list,maze)
+            #print_maze(np.array(maze))
     
     
 #Maze 1
