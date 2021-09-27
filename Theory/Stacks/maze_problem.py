@@ -49,10 +49,7 @@ def reset(start,end,lst,maze):
 #Function to find path in the Maze 
 def findpath(curr_i,curr_j,path,maze):
     if 0<=curr_i<len(maze) and 0<=curr_j<len(maze[curr_i]):  
-        if maze[curr_j][curr_i]=='S':
-            path+=[curr_i,curr_j]
-        
-        if maze[curr_j][curr_i]=='E':
+        if maze[curr_j][curr_i]=='S' or maze[curr_j][curr_i]=='E':
             path+=[curr_i,curr_j]
     
         elif 0==curr_i or curr_i==len(maze)-1 or 0==curr_j or curr_j==len(maze[curr_i])-1: #CONTINUE HERE
