@@ -1,5 +1,5 @@
 import numpy as np
-
+space_collection=list()
 #Function to create a Maze
 def make_maze(r,c):
     maze=list()
@@ -17,6 +17,7 @@ def setwall(lst, maze):
             if maze[j][i]=='S' or maze[j][i]=='E':
                 continue
             elif maze[j][i] not in lst:
+                space_collection.append(maze[j][i])
                 maze[j][i]=1
             else:
                 maze[j][i]=0
@@ -48,48 +49,69 @@ def reset(start,end,lst,maze):
 
 #Function to find path in the Maze 
 def findpath(curr_i,curr_j,path,maze):
-    if 0<=curr_i<len(maze) and 0<=curr_j<len(maze[curr_i]):  
-        if maze[curr_j][curr_i]=='S' or maze[curr_j][curr_i]=='E':
-            path+=[curr_i,curr_j]
+    right=curr_j+1+len(maze)*curr_i
+    left=curr_j-1+len(maze)*curr_i
+    up=curr_j+len(maze)*(curr_i-1)
+    down=curr_j+len(maze)*(curr_i+1)
     
-        elif 0==curr_i or curr_i==len(maze)-1 or 0==curr_j or curr_j==len(maze[curr_i])-1: #CONTINUE HERE
-            if 0==curr_i or curr_i==len(maze)-1 and (0!=curr_j and curr_j!=len(maze[curr_i])-1):
-                if 0==curr_i:
-                    print("")
-                elif curr_i==len(maze)-1:
-                    print("")
-            elif (0!=curr_i and curr_i!=len(maze)-1) and 0==curr_j or curr_j==len(maze[curr_i])-1:
-                print("")
+    if up in space_collection and maze[curr_i-1][curr_j]=="E":
+        path.append([curr_i-1,curr_j])
+    
+    elif down in space_collection and maze[curr_i+1][curr_j]=="E":
+        path.append([curr_i+1,curr_j])
+        
+    
+    elif right in space_collection and maze[curr_i][curr_j+1]=="E":
+        path.append([curr_i,curr_j+1])
+        
+    
+    elif left in space_collection and maze[curr_i][curr_j-1]=="E":
+        path.append([curr_i,curr_j-1])
+
+    elif up in space_collection and maze[curr_i-1][curr_j]!="X" and maze[curr_i-1][curr_j]!="E":
+        maze[curr_i-1][curr_j]="X"
+        path.append([curr_i-1,curr_j])
+        path=findpath(curr_i-1,curr_j,path,maze)
+    
+    elif down in space_collection and maze[curr_i+1][curr_j]!="X" and maze[curr_i+1][curr_j]!="E":
+        maze[curr_i+1][curr_j]="X"
+        path.append([curr_i+1,curr_j])
+        path=findpath(curr_i+1,curr_j,path,maze)
+        
+    
+    elif right in space_collection and maze[curr_i][curr_j+1]!="X" and maze[curr_i][curr_j+1]!="E":
+        maze[curr_i][curr_j+1]="X"
+        path.append([curr_i,curr_j+1])
+        path=findpath(curr_i,curr_j+1,path,maze)
+        
+    
+    elif left in space_collection and maze[curr_i][curr_j-1]!="X" and maze[curr_i][curr_j-1]!="O":
+        maze[curr_i][curr_j-1]="X"
+        path.append([curr_i,curr_j-1])
+        path=findpath(curr_i,curr_j-1,path,maze)
+        
+    else:
+        maze[curr_i][curr_j]='O'
+        curr=curr_j+len(maze)*curr_i
+        if curr in space_collection:
+            space_collection.remove(curr)
+        try :
+            [curr_i,curr_j]=path.pop()
+        except:
             return path
+        curr=curr_j+len(maze)*curr_i
+        if curr in space_collection:
+            space_collection.remove(curr)
+        
+        print(path)
+        try:
+            [curr_i,curr_j]=path.pop()
+        except:
+            return path
+        print(curr_i,curr_j)
+        path=findpath(curr_i,curr_j,path,maze)
     
-        elif 0<curr_i<len(maze)-1 and 0<curr_j<len(maze[curr_i])-1:
-
-            if maze[curr_j-1][curr_i]==1:
-                maze[curr_j-1][curr_i]="X"
-                path+=[curr_i,curr_j-1]
-                path=findpath(curr_i,curr_j-1,maze,path)
-
-            elif maze[curr_j+1][curr_i]==1:
-                maze[curr_j+1][curr_i]="X"
-                path+=[curr_i,curr_j+1]
-                path=findpath(curr_i,curr_j+1,maze,path)
-
-            elif maze[curr_j][curr_i-1]==1:
-                maze[curr_j][curr_i-1]="X"
-                path+=[curr_i-1,curr_j]
-                path=findpath(curr_i-1,curr_j,maze,path)
-
-            elif maze[curr_j][curr_i+1]==1:
-                maze[curr_j][curr_i+1]="X"
-                path+=[curr_i+1,curr_j]
-                path=findpath(curr_i+1,curr_j,maze,path)
-        
-            else:
-                maze[curr_j][curr_i]='O'
-                path-=[curr_i,curr_j]
-                [curr_i,curr_j]=path[len(path)-1]
-                path=findpath(curr_i,curr_j,maze,path)    
-        
+    print(space_collection)
     return path
 
 #Function to color the starting & ending points, walls and spaces accordingly
@@ -167,27 +189,36 @@ if True:
                     print(colored(0, 0, 0, '  '),end="")
             print("\n")
         print("\n")
-        '''
+        #'''
 
     #'''
     #Find Path 
+        start_j=start_i=0
+        end_j=end_i=0
         for _ in range(len(maze)):
             for _2 in range(len(maze[_])):
                 if _2+_*r==start:
                     start_i=_
                     start_j=_2
+                if _2+_*r==end:
+                    end_i=_
+                    end_j=_2
         path=list()
         path=findpath(start_i,start_j,path,maze)
+        print(path)
         
     #Print the solved Maze or reset if no path found
-        (i,j)=path[len(path)-1]
+        try:
+            [i,j]=path[len(path)-1]
+        except:
+            i,j=end_i-1,end_j-1
         if maze[j][i]=='E':          
             for _ in range(len(maze)):
                 for _2 in range(len(maze[_])):
-                    if (_,_2) not in path:
+                    if maze[_][_2]=="E" or [_,_2] not in path:
                         continue
                     else:
-                     maze[_2][_]='X'
+                        maze[_][_2]='X'
             
             print("\n")
             for _ in range(len(maze)):
@@ -202,13 +233,13 @@ if True:
                         print(colored(0, 0, 0, '  '),end="")
                 print("\n")
             print("\n")
-                     
+        #'''                 
         else:
             print("No path found for the given configuration!!\n")
             print("Resetting the maze...")
         #Reset Maze
             maze=reset(start,end,wall_list,maze)
-    #'''
+        #'''
     
 #Maze 1
     #Maze Shape: 7x7
