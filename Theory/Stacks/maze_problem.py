@@ -54,18 +54,18 @@ def findpath(curr_i,curr_j,path,maze):
     up=curr_j+len(maze)*(curr_i-1)
     down=curr_j+len(maze)*(curr_i+1)
     
-    if up in space_collection and maze[curr_i-1][curr_j]=="E":
+    if up < len(maze)*len(maze[0])and maze[curr_i-1][curr_j]=="E":
         path.append([curr_i-1,curr_j])
     
-    elif down in space_collection and maze[curr_i+1][curr_j]=="E":
+    elif down < len(maze)*len(maze[0]) and maze[curr_i+1][curr_j]=="E":
         path.append([curr_i+1,curr_j])
         
     
-    elif right in space_collection and maze[curr_i][curr_j+1]=="E":
+    elif right < len(maze)*len(maze[0]) and maze[curr_i][curr_j+1]=="E":
         path.append([curr_i,curr_j+1])
         
     
-    elif left in space_collection and maze[curr_i][curr_j-1]=="E":
+    elif left < len(maze)*len(maze[0]) and maze[curr_i][curr_j-1]=="E":
         path.append([curr_i,curr_j-1])
 
     elif up in space_collection and maze[curr_i-1][curr_j]!="X" and maze[curr_i-1][curr_j]!="E":
