@@ -1,5 +1,6 @@
 import numpy as np
 space_collection=list()
+fpath=list()
 #Function to create a Maze
 def make_maze(r,c):
     maze=list()
@@ -93,25 +94,22 @@ def findpath(curr_i,curr_j,path,maze):
     else:
         maze[curr_i][curr_j]='O'
         curr=curr_j+len(maze)*curr_i
+        
         if curr in space_collection:
             space_collection.remove(curr)
         try :
             [curr_i,curr_j]=path.pop()
         except:
             return path
-        curr=curr_j+len(maze)*curr_i
-        if curr in space_collection:
-            space_collection.remove(curr)
-        
-        print(path)
+        maze[curr_i][curr_j]=1
         try:
             [curr_i,curr_j]=path.pop()
         except:
             return path
-        print(curr_i,curr_j)
+        print(path)
         path=findpath(curr_i,curr_j,path,maze)
     
-    print(space_collection)
+    #print(space_collection)
     return path
 
 #Function to color the starting & ending points, walls and spaces accordingly
@@ -126,21 +124,6 @@ if True:
     [r,c]=r_n_c.split(',')
     r,c=int(r),int(c)
     maze=make_maze(r,c)
-    '''
-    print("\n")
-    for _ in range(len(maze)):
-        for _2 in range(len(maze[_])):
-            if maze[_][_2]==0:
-                print(colored(150, 150, 150, '\u25C6 '),end="")              #'\u25C6' is unicode for filled diamond       
-            elif maze[_][_2]=='S' or maze[_][_2]=='E':
-                print(colored(0, 255, 255, maze[_][_2]+' '),end="")
-            elif maze[_][_2]=='X':
-                print(colored(255, 255, 0, '\u2022 '),end="")                #'\u2022' is unicode for bullet
-            else:
-                print(colored(0, 0, 0, '  '),end="")
-        print("\n")
-    print("\n")
-    '''
 
     #Taking input of start and end
     start=input(f'Enter the Start index in range 0 to {r*c-1}:\n')
@@ -175,23 +158,7 @@ if True:
         for i in range(len(wall_list)):
             wall_list[i]=int(wall_list[i])
         maze=setwall(wall_list, maze)
-        '''
-        print("\n")
-        for _ in range(len(maze)):
-            for _2 in range(len(maze[_])):
-                if maze[_][_2]==0:
-                    print(colored(150, 150, 150, '\u25C6 '),end="")              #'\u25C6' is unicode for filled diamond       
-                elif maze[_][_2]=='S' or maze[_][_2]=='E':
-                    print(colored(0, 255, 255, maze[_][_2]+' '),end="")
-                elif maze[_][_2]=='X':
-                    print(colored(255, 255, 0, '\u2022 '),end="")                #'\u2022' is unicode for bullet
-                else:
-                    print(colored(0, 0, 0, '  '),end="")
-            print("\n")
-        print("\n")
-        #'''
 
-    #'''
     #Find Path 
         start_j=start_i=0
         end_j=end_i=0
@@ -233,13 +200,12 @@ if True:
                         print(colored(0, 0, 0, '  '),end="")
                 print("\n")
             print("\n")
-        #'''                 
+                         
         else:
             print("No path found for the given configuration!!\n")
             print("Resetting the maze...")
         #Reset Maze
             maze=reset(start,end,wall_list,maze)
-        #'''
     
 #Maze 1
     #Maze Shape: 7x7
