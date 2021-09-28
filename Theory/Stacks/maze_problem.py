@@ -101,14 +101,9 @@ def findpath(curr_i,curr_j,path,maze):
             [curr_i,curr_j]=path.pop()
         except:
             return path
-        maze[curr_i][curr_j]=1
-        try:
-            [curr_i,curr_j]=path.pop()
-        except:
-            return path
-        print(path)
+        
         path=findpath(curr_i,curr_j,path,maze)
-    
+        #print(path)
     #print(space_collection)
     return path
 
@@ -173,13 +168,12 @@ if True:
         path=list()
         path=findpath(start_i,start_j,path,maze)
         print(path)
-        
     #Print the solved Maze or reset if no path found
         try:
             [i,j]=path[len(path)-1]
         except:
             i,j=end_i-1,end_j-1
-        if maze[j][i]=='E':          
+        if maze[i][j]=='E':          
             for _ in range(len(maze)):
                 for _2 in range(len(maze[_])):
                     if maze[_][_2]=="E" or [_,_2] not in path:
