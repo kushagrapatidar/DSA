@@ -42,8 +42,9 @@ def mergesort(arr):
             k+=1
 
 #Driver Code
+'''
 if True:
     arr=[12,11,13,2,19,21]
     print("Given array is\n",arr)
     mergesort(arr)
-    print("Sorted array is:\n",arr)
+    print("Sorted array is:\n",arr)'''

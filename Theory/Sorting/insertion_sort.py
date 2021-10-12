@@ -13,7 +13,8 @@ def insertionSort(arr):
         arr[j+1]=store
 
 #Driver Code
+'''
 if True:
     arr=[7,6,10,5,9,2,213,1,15,10,25,7]
     insertionSort(arr)
-    print(arr)
+    print(arr)'''

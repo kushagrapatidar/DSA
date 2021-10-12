@@ -1,7 +1,7 @@
 #Counting Sort
 
 #Counting Sort Function
-def countingSort(arr):
+def countingsort(arr):
     count=dict()
     for ele in arr:
         if ele not in count:
@@ -18,8 +18,9 @@ def countingSort(arr):
     return arr
 
 #Driver Code
+'''
 if True:
     arr=[0,1,4,2,4,7,2,6,3,4,0,2,9,4,9,3,5,6,8,7,5,8]
     print(arr)
-    arr=countingSort(arr)
-    print(arr)
+    arr=countingsort(arr)
+    print(arr)'''

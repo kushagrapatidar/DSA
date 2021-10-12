@@ -27,10 +27,7 @@ def heapSort(arr):
     
     return arr
 
-#Driver Code
-if True:
-    arr=[3,7,1,8,2,5,9,4,6]
-    print('Initial Array:\n',arr,"\n")
+def call_sort(arr):
     i=len(arr)
 
     #Loop to call heapSort on a particular segment of arr by decreasing the length from the end
@@ -38,7 +35,14 @@ if True:
         arr[:i]=heapSort(arr[:i])
         i-=1
 
-    print('Sorted Array:\n',arr)
+#Driver Code
+'''
+if True:
+    arr=[3,7,1,8,2,5,9,4,6]
+    print('Initial Array:\n',arr,"\n")
+    call_sort(arr)
+
+    print('Sorted Array:\n',arr)'''
 
 #Rough Work
 

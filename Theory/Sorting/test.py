@@ -1,7 +1,6 @@
-from shell_sort import shellsort
+import heap_sort as hs
 arr=[3,7,1,8,2,5,9,4,6]
-#arr=[23,29,15,19,31,7,9,5,2]
-print(f"Initial Array:\n{arr}\n")
+print('Initial Array:\n',arr,"\n")
+hs.call_sort(arr)
 
-arr=shellsort(arr)
-print(f"Sorted Array:\n{arr}")
+print('Sorted Array:\n',arr)

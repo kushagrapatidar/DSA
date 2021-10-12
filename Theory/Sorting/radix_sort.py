@@ -14,7 +14,7 @@ def app(dic,element,digit):
         dic[digit]=lst
     
 #Radix Sort Function
-def radixSort(arr,exp,max_num):
+def radixsort(arr,exp,max_num):
     if max_num//exp>0: #Procedure will work only if
                        #number of recursions is less than or equal to number of digits in max_num        
         temp=dict()
@@ -37,13 +37,14 @@ def radixSort(arr,exp,max_num):
         exp*=10 #Increase the value by the factor of 10
         
         #Recursive call the Radix Sort Function for sorting as per the new value of exp, i,e. as per the next greater face value digits
-        arr=radixSort(arr,exp,max_num)
+        arr=radixsort(arr,exp,max_num)
     return arr
 
 #Driver Code
+'''
 if True:
     arr=[7,6,10,5,9,2,213,1,15,10,25,7]
     print("Initial Array:\n",arr,"\r\n")
     exp=1
-    arr=radixSort(arr,exp,max(arr))
-    print("Sorted Array:\n",arr)
+    arr=radixsort(arr,exp,max(arr))
+    print("Sorted Array:\n",arr)'''

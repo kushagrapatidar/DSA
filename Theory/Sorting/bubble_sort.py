@@ -1,7 +1,7 @@
 #Bubble Sort
 
 #Bubble Sort Function
-def bubbleSort(arr):
+def sort(arr):
     for j in range(len(arr)):
         for i in range(len(arr)-1):
             num=arr[i]
@@ -11,8 +11,9 @@ def bubbleSort(arr):
                 arr[i+1]=num
 
 #Driver Code
+'''
 if True:
     arr=[7,6,10,5,9,2,213,1,15,10,25,7]
     print(arr)
     bubbleSort(arr)
-    print(arr)
+    print(arr)'''

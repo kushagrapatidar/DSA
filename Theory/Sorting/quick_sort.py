@@ -21,19 +21,20 @@ def Partition(start,end,arr):
     return j
 
 #Quick Sort Function
-def quickSort(start,end,arr):
+def quicksort(start,end,arr):
     if start<end: #Function will execute only if there are atleast 2 elements in arr
         
         piv_index=Partition(start,end,arr) #Pivot element index obtained from Partition Function
 
         #Sorting the partitions on both the sides of pivot element
-        quickSort(start,piv_index-1,arr) #Sorting the left half
-        quickSort(piv_index+1,end,arr)   #Sorting the right half
+        quicksort(start,piv_index-1,arr) #Sorting the left half
+        quicksort(piv_index+1,end,arr)   #Sorting the right half
         
     return arr
 #Driver Code
+'''
 if True:
     arr=[7,6,10,5,9,2,213,1,15,10,25,7]
     print("Given array is\n",arr)
-    arr=quickSort(0,len(arr)-1,arr).copy()
-    print("Sorted array is:\n",arr)
+    arr=quicksort(0,len(arr)-1,arr).copy()
+    print("Sorted array is:\n",arr)'''
