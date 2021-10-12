@@ -32,7 +32,7 @@ def call_sort(arr):
 
     #Loop to call heapSort on a particular segment of arr by decreasing the length from the end
     while i>0:
-        arr[:i]=heapSort(arr[:i])
+        arr[:i]=heapsort(arr[:i])
         i-=1
 
 #Driver Code
