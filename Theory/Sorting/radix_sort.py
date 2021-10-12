@@ -1,7 +1,9 @@
 #Radix Sort
 
 #Appending element in the dictionary
-def app(dic,element,digit):
+def app(dic=None,element=0,digit=0):
+    if dic is None:
+        dic=dict()
     lst=list()
     #Create a new key if digit not in dic keys and insert the element
     if digit not in dic.keys():
@@ -12,6 +14,7 @@ def app(dic,element,digit):
         lst=dic[digit]
         lst.append(element)
         dic[digit]=lst
+    return dic
     
 #Radix Sort Function
 def radixsort(arr,exp,max_num):
@@ -21,7 +24,7 @@ def radixsort(arr,exp,max_num):
 
         for element in arr:
             digit=(element//exp)%10 #Genrating the face value digit
-            app(temp,element,digit) #Append the element as per the face value digit
+            temp=app(temp,element,digit) #Append the element as per the face value digit
 
         array=list()
         sorted_keys=sorted(temp) #Sorted keys of temp, i,e. ordered list of current face value digits
