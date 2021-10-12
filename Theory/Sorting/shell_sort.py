@@ -73,7 +73,7 @@ def shellsort(arr):
             break
         else:
             print('Choose again!!')
-    
+    print(f'Gap sequence used: {gap_sequence}\n')
     p=1
     
     for gap in gap_sequence:
