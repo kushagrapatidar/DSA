@@ -1,7 +1,7 @@
 #Heap Sort
 
 #Heap Sort Function:
-def heapSort(arr):
+def heapsort(arr):
     n=len(arr)-1
 
     #Loop to create a Max Heap
