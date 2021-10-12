@@ -25,13 +25,10 @@ def radixsort(arr,exp,max_num):
 
         array=list()
         sorted_keys=sorted(temp) #Sorted keys of temp, i,e. ordered list of current face value digits
-        next=0 #current index in arr
         for i in sorted_keys: 
-            lst=list()
             lst=temp[i]
             for j in range(len(lst)):
                 array.append(lst[j]) #Inserting the elements as per the order of current face value digits
-            next=j+1
         
         arr=array
         exp*=10 #Increase the value by the factor of 10
