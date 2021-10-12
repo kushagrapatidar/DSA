@@ -1,7 +1,7 @@
 #Quick Sort
 
 #Partition Function
-def Partition(start,end,arr):
+def partition(start,end,arr):
     #Assigning the pivot element, start index and end index
     piv=arr[start]
     i=start
@@ -24,7 +24,7 @@ def Partition(start,end,arr):
 def quicksort(start,end,arr):
     if start<end: #Function will execute only if there are atleast 2 elements in arr
         
-        piv_index=Partition(start,end,arr) #Pivot element index obtained from Partition Function
+        piv_index=partition(start,end,arr) #Pivot element index obtained from Partition Function
 
         #Sorting the partitions on both the sides of pivot element
         quicksort(start,piv_index-1,arr) #Sorting the left half
