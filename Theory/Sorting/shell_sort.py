@@ -60,9 +60,19 @@ def construct_pratt_gap_sequence(max_size):
 #Customized Sort Function to work over Shell, Knuth & Pratt Gaps
 def shellsort(arr):
     n=len(arr)
-    gap_sequence=construct_shell_gap_sequence(n)
-    #gap_sequence=construct_knuth_gap_sequence(n)
-    #gap_sequence=construct_pratt_gap_sequence(n)
+    seq=input("Enter the sequence:('Shell' or 'Knuth' or 'Pratt'): ")
+    while True:
+        if seq=='Shell' or seq=='shell':
+            gap_sequence=construct_shell_gap_sequence(n)
+            break
+        elif seq=='Knuth' or seq=='knuth':
+            gap_sequence=construct_knuth_gap_sequence(n)
+            break
+        elif seq=='Pratt' or seq=='pratt':
+            gap_sequence=construct_pratt_gap_sequence(n)
+            break
+        else:
+            print('Choose again!!')
     
     p=1
     
@@ -88,10 +98,10 @@ def shellsort(arr):
     return arr
 
 #Driver Code
-if True:
+'''if True:
     arr=[3,7,1,8,2,5,9,4,6]
     #arr=[23,29,15,19,31,7,9,5,2]
     print(f"Initial Array:\n{arr}\n")
     
     arr=shellsort(arr)
-    print(f"Sorted Array:\n{arr}")
+    print(f"Sorted Array:\n{arr}")'''
