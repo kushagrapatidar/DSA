@@ -46,7 +46,7 @@ def insert_bet(head,pos,data):
             try:
                 temp.pos=currPos+1
                 currNode=temp
-            except:
+            except AttributeError:
                 continue
         return currNode
 
