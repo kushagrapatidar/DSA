@@ -15,7 +15,8 @@ def set_pos(head):
             temp.pos=currPos+1
         except AttributeError:
             continue
-    
+
+#Insert Operations    
 def insert_beg(head,data):
     newNode=Node()
     newNode.data=data
@@ -49,6 +50,30 @@ def insert_end(tail,data):
     tail=newNode
     return tail
 
+#Reverse Operation
+def reverse(head,tail):
+    temp=head
+    while temp!=None:
+        temp.prev,temp.next=temp.next,temp.prev
+        temp=temp.prev
+    head,tail=tail,head
+    set_pos(head)
+    return head,tail
+
+#Traverse Operation
+def traverse(head):
+    temp=head
+    data=""
+    posStr=""
+    while temp!=None:
+        data+=str(temp.data)+" "
+        posStr+=str(temp.pos)+" "
+        temp=temp.next
+    
+    print(data+"\n"+posStr)
+
+########################################################################################################################################################################
+#Delete Operations
 def delete_beg(head):
     print(f"Data at the deleted Node: {head.data}")
     temp=head
@@ -84,6 +109,8 @@ def delete_end(tail):
     tail.next=None
     return tail
 
+########################################################################################################################################################################
+#Insert Function
 def insert(head,tail):
     data=input('\nEnter the data: ')
     try:
@@ -117,6 +144,7 @@ def insert(head,tail):
     set_pos(head)
     return head,tail
 
+#Delete Function
 def delete(head,tail):
     if head==None or tail==None:
         print("The List is Empty!!")
@@ -134,26 +162,8 @@ def delete(head,tail):
     set_pos(head)
     return head,tail
 
-def reverse(head,tail):
-    temp=head
-    while temp!=None:
-        temp.prev,temp.next=temp.next,temp.prev
-        temp=temp.prev
-    head,tail=tail,head
-    set_pos(head)
-    return head,tail
-
-def traverse(head):
-    temp=head
-    data=""
-    posStr=""
-    while temp!=None:
-        data+=str(temp.data)+" "
-        posStr+=str(temp.pos)+" "
-        temp=temp.next
-    
-    print(data+"\n"+posStr)
-
+########################################################################################################################################################################
+#Functions to call insert and delete functions
 def call_insert(head,tail):
     num=int(input('Enter the number of elements to be inserted: '))
     for _ in range(num):
@@ -170,6 +180,7 @@ def call_delete(head,tail):
     print("\nLinked List after Deletion: ")
     traverse(head)
 
+########################################################################################################################################################################
 
 
 #Test List
