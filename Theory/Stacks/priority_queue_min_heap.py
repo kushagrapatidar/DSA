@@ -51,9 +51,9 @@ def rootnode(array):
 arr = []
 
 insert(arr, 3)
-#insert(arr, 4)
-#insert(arr, 9)
-#insert(arr, 5)
+insert(arr, 4)
+insert(arr, 9)
+insert(arr, 5)
 #insert(arr, 2)
 print("max heap",arr)
 #deleteNode(arr,9)
