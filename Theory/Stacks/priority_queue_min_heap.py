@@ -3,7 +3,7 @@
 
 # Function to min-heapify the tree
 def heapify(arr, n, i):
-    # Find the largest among root, left child and right child
+    # Find the smallest among root, left child and right child
     smallest = i
     l = 2 * i + 1
     r = 2 * i + 2
@@ -16,7 +16,7 @@ def heapify(arr, n, i):
         #print("right node",arr[r])
         smallest = r
 
-    # Swap and continue heapifying if root is not largest
+    # Swap and continue heapifying if root is not smallest
     if smallest != i:
         arr[i], arr[smallest] = arr[smallest], arr[i]
         heapify(arr, n, smallest)
