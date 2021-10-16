@@ -4,22 +4,22 @@
 # Function to min-heapify the tree
 def heapify(arr, n, i):
     # Find the largest among root, left child and right child
-    largest = i
+    smallest = i
     l = 2 * i + 1
     r = 2 * i + 2
     #print("print l r",l,r)
-    if l < n and arr[i] < arr[l]:
+    if l < n and arr[i] > arr[l]:
         #print("left node",arr[l])
-        largest = l
+        smallest = l
 
-    if r < n and arr[largest] < arr[r]:
+    if r < n and arr[smallest] > arr[r]:
         #print("right node",arr[r])
-        largest = r
+        smallest = r
 
     # Swap and continue heapifying if root is not largest
-    if largest != i:
-        arr[i], arr[largest] = arr[largest], arr[i]
-        heapify(arr, n, largest)
+    if smallest != i:
+        arr[i], arr[smallest] = arr[smallest], arr[i]
+        heapify(arr, n, smallest)
 
 
 # Function to insert an element into the tree
