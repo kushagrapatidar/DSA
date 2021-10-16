@@ -1,7 +1,7 @@
-# Priority Queue implementation in Python
+# Priority Queue min-heap implementation in Python
 
 
-# Function to heapify the tree
+# Function to min-heapify the tree
 def heapify(arr, n, i):
     # Find the largest among root, left child and right child
     largest = i
