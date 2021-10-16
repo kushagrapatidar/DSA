@@ -182,18 +182,11 @@ def call_delete(head,tail):
 
 ########################################################################################################################################################################
 
-
-#Test List
-    #beg - 'List'
-    #beg - 'Linked'
-    #end - 'is'
-    #end - 'a'
-    #1 - 'Doubly'
-    #7 - 'Structure'
-    #6 - 'Data'
-    #del - 5
-    #del - beg
-    #del - end
+#Operate Function to choose the operation
+def operate():
+    head=None
+    tail=None
+    
 
 #Tail Traverse
 #if True:
