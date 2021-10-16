@@ -30,7 +30,7 @@ def insert(array, newNum):
             heapify(array, size, i)
 
 # Function to delete an element from the tree
-def deleteNode(array, num):
+def deletenode(array, num):
     size = len(array)
     #i = 0
     for i in range(0, size):
