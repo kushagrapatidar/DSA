@@ -1,7 +1,9 @@
-sizes=[0,1,2,3]
-for size in sizes:
-    i=0
-    while i <=(size//2)-1:
-        print(i)
-        i+=1
-    print("\n")
+from binary_tree_height import find_height
+
+arr=[2,3,9,4,5]
+height=find_height(arr,0)
+print(f'Height of the tree {arr} is {height}')
+
+arr=[2,3,9,4,5,10,11,6]
+height=find_height(arr,0)
+print(f'\nHeight of the tree {arr} is {height}')
