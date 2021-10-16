@@ -63,6 +63,43 @@ def insert_end(head,tail,data):
         newNode.pos=tail.pos+1
         return newNode
 
+def delete_beg(head):
+    if head==None:
+        print("The Linked List Is Empty!!")
+        return None
+    else:
+        print(f"Data at the deleted Node: {head.data}")
+        temp=head
+        head=None
+        head=temp.next
+        head.prev=None
+        return head
+
+def delete_bet(head,pos):
+    if head==None:
+        print("The Linked List Is Empty!!")
+        return None
+    else:
+        temp=head
+        while temp!=None:
+            if temp.pos==pos-1:
+                print(f"Data at the deleted Node: {head.data}")
+                break
+            temp=temp.next
+    
+
+def delete_end(tail):
+    if tail==None:
+        print("The Linked List Is Empty!!")
+        return None
+    else:
+        print(f"Data at the deleted Node: {tail.data}")
+        temp=tail
+        tail=None
+        tail=temp.prev
+        tail.next=None
+        return tail
+
 def traverse(head):
     temp=head
     data=""
