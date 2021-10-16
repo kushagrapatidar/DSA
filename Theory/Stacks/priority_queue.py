@@ -25,10 +25,7 @@ def heapify(arr, n, i):
 # Function to insert an element into the tree
 def insert(array, newNum):
     size = len(array)
-    if size == 0:
-        array.append(newNum)
-    else:
-        array.append(newNum)
+    array.append(newNum)
     for i in range((size // 2) - 1, -1, -1):
             heapify(array, size, i)
 
