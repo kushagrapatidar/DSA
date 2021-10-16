@@ -171,8 +171,6 @@ def call_insert(head,tail):
     for _ in range(num):
         head,tail=insert(head,tail)
 
-    print("\nLinked List after Insertion: ")
-    traverse(head)
     return head,tail
 
 def call_delete(head,tail):
@@ -180,8 +178,6 @@ def call_delete(head,tail):
     for _ in range(num):
         head,tail=delete(head,tail)
 
-    print("\nLinked List after Deletion: ")
-    traverse(head)
     return head,tail
 
 ########################################################################################################################################################################
@@ -189,7 +185,7 @@ def call_delete(head,tail):
 #Operate Function to choose the operation
 def operate(head,tail):
     def make_choice():
-        ch=input("Do you want to conduct more operations??('Y' for yes & 'N' for no)")
+        ch=input("Do you want to conduct more operations??('Y' for yes & 'N' for no): ")
         if ch=='Y' or ch=='y':
             operate(head,tail)
     ch=input("Enter the operation:\n'I' to Insert\n'D' to Delete\n'R' to Reverse\n'T' to Traverse\nYour Choice: ")
