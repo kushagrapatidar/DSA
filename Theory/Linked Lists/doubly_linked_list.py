@@ -78,7 +78,6 @@ def delete_beg(head):
 def delete_bet(head,pos):
     if head==None:
         print("The Linked List Is Empty!!")
-        return None
     else:
         temp=head
         while temp!=None:
@@ -86,6 +85,10 @@ def delete_bet(head,pos):
                 print(f"Data at the deleted Node: {head.data}")
                 break
             temp=temp.next
+        prevNode,nextNode=temp.prev,temp.next
+        prevNode.next,nextNode.prev=nextNode,prevNode
+        temp=None
+
     
 
 def delete_end(tail):
