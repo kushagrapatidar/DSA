@@ -5,9 +5,9 @@ class Node:
     pos=None
 
 def set_pos(head):
-    head.pos=0
+    head.pos=1
     temp=head
-    currPos=0
+    currPos=1
     while temp!=None:
         currPos=temp.pos
         temp=temp.next
@@ -17,59 +17,37 @@ def set_pos(head):
             continue
     
 def insert_beg(head,data):
-    if head==None:
-        head.data=data
-        head.pos=0
-        return head
-    else:
-        newNode=Node()
-        newNode.data=data
-        newNode.next,head.prev=head,newNode
-        head=newNode
-        set_pos(head)
-        return head
+    newNode=Node()
+    newNode.data=data
+    newNode.next,head.prev=head,newNode
+    head=newNode
+    return head
 
 def insert_bet(head,tail,pos,data):
-    if head.data==None:
-        print("There is no node in the list\nCreating the first node...\n")
-        head.data=data
-        head.pos=0
-        return head
-    else:
-        if pos==1:
-            head=insert_beg(head,data)
-        else:            
-            try:
-                currNode=head
+    if pos==1:
+        head=insert_beg(head,data)
+    elif pos>tail.pos:
+        tail=insert_end(tail,data)
+    else:            
+        currNode=head
+        while currNode.pos<pos-1:
+            currNode=currNode.next
+        nextNode=currNode.next
 
-                while currNode.pos<pos-2:
-                    currNode=currNode.next
-                nextNode=currNode.next
-        
-                if nextNode!=None:
-                    newNode=Node()
-                    newNode.data=data
-                    newNode.prev,currNode.next=currNode,newNode
-                    newNode.next,nextNode.prev=nextNode,newNode
-            except AttributeError:
-                tail=insert_end(head,tail,data)
+        if nextNode!=None:
+            newNode=Node()
+            newNode.data=data
+            newNode.prev,currNode.next=currNode,newNode
+            newNode.next,nextNode.prev=nextNode,newNode
 
-        set_pos(head)
-        return head,tail
+    return head,tail
 
-def insert_end(head,tail,data):
-    if tail==None:
-        head.data=data
-        head.pos=0
-        tail=head
-        return tail
-    else:
-        newNode=Node()
-        newNode.data=data
-        newNode.prev,tail.next=tail,newNode
-        tail=newNode
-        set_pos(head)
-        return tail
+def insert_end(tail,data):
+    newNode=Node()
+    newNode.data=data
+    newNode.prev,tail.next=tail,newNode
+    tail=newNode
+    return tail
 
 def delete_beg(head):
     print(f"Data at the deleted Node: {head.data}")
@@ -86,7 +64,7 @@ def delete_bet(head,tail,pos):
     else:
         temp=head
         while temp!=None:
-            if temp.pos==pos-1:
+            if temp.pos==pos:
                 print(f"Data at the deleted Node: {temp.data}")
                 break
             temp=temp.next
@@ -108,22 +86,34 @@ def delete_end(tail):
 
 def insert(head,tail):
     data=input('Enter the data: ')
-    if isinstance(data, int):
-        data=int(data)
+    try:
+        try:
+            data=int(data)
+        except ValueError:
+            data=float(data)
+    except ValueError:
+                data=str(data)
+    
     if head==None or tail==None:
-        print("The List is Empty!!")
+        print("The List is Empty!!\nCreating the first Node...")
+        head=Node()
+        head.data=data
+        head.pos=1
+        tail=head
 
     else:
         ch=input(f"Enter the position of insertion:'B' for Beginnig, 'E' for End or Position between 1 and {tail.pos+1}: ")
     
-        if isinstance(ch, int):
+        try:
             ch=int(ch)
             head,tail=insert_bet(head,tail,ch,data)
-        elif ch=='B' or ch=='b':
-            head=insert_beg(head,data)
-        elif ch=='E' or ch=='e':
-            tail=insert_end(head,tail,data)
+        except ValueError:
+            if ch=='B' or ch=='b':
+                head=insert_beg(head,data)
+            elif ch=='E' or ch=='e':
+                tail=insert_end(tail,data)
     
+    set_pos(head)
     return head,tail
 
 def delete(head,tail):
@@ -139,8 +129,17 @@ def delete(head,tail):
         elif ch=='E' or ch=='e':
             tail=delete_end(tail)
     
+    set_pos(head)
     return head,tail
 
+def reverse(head,tail):
+    temp=head
+    while temp!=None:
+        temp.prev,temp.next=temp.next,temp.prev
+        temp=temp.prev
+    head,tail=tail,head
+    set_pos(head)
+    return head,tail
 
 def traverse(head):
     temp=head
@@ -154,18 +153,20 @@ def traverse(head):
     return data,posStr
 
 #Driver Code
-head=Node()
-tail=Node()
+head=tail=None
 
-tail=head=insert_beg(head,"List")
-head=insert_beg(head,"Linked")
+num=int(input('Enter the number of elements: '))
+for _ in range(num):
+    head,tail=insert(head,tail)
 
-tail=insert_end(head,tail,"is")
-tail=insert_end(head,tail,"a")
-
-head,tail=insert_bet(head,tail,1,"Doubly")
-head,tail=insert_bet(head,tail,7,"Structure")
-head,tail=insert_bet(head,tail,6,"Data")
+#Test List
+#beg - 'List'
+#beg - 'Linked'
+#end - 'is'
+#end - 'a'
+#1 - 'Doubly'
+#7 - 'Structure'
+#6 - 'Data'
 
 print("Initial Linked List: ")
 data,posStr=traverse(head)
