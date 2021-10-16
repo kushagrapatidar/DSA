@@ -232,7 +232,6 @@ def call_delete(head,tail):
     return head,tail
 
 ########################################################################################################################################################################
-
 #Operate Function to choose the operation
 def operate(head,tail):        
     ch=input("Enter the operation:\n'I' to Insert\n'D' to Delete\n'Sr' to Search\n'U' to Update\n'R' to Reverse\n'St' to Sort\n'T' to Traverse\nYour Choice: ")
