@@ -111,6 +111,57 @@ def traverse(head):
     
     print(data+"\n"+posStr)
 
+#Sort Operation
+def sort(head,tail):
+    return head,tail
+
+#Search Operation
+def search(head,data=None):
+    pos=[]
+    if data==None:
+        data=input('Enter the data to be searched: ')
+    try:
+        try:
+            data=int(data)
+        except ValueError:
+            data=float(data)
+    except ValueError:
+        data=str(data)
+    temp=head
+    while temp!=None:
+        if temp.data==data:
+            pos.append(temp.pos)
+        temp=temp.next
+    return pos
+
+#Update Operation
+def update(head):
+    olddata=input('Enter the data to be Updated: ')
+    newdata=input('Enter the Updated data: ')
+    try:
+        try:
+            olddata=int(olddata)
+        except ValueError:
+            olddata=float(olddata)
+    except ValueError:
+        olddata=str(olddata)
+    try:
+        try:
+            newdata=int(newdata)
+        except ValueError:
+            newdata=float(newdata)
+    except ValueError:
+        newdata=str(newdata)
+    pos=search(head,olddata)
+    if len(pos)==0:
+        print(f"The list does not contain any data,{olddata}")
+    
+    else:
+        temp=head
+        while temp!=None:
+            if temp.pos in pos:
+                temp.data=newdata
+    
 ########################################################################################################################################################################
 #Insert Function
 def insert(head,tail):
@@ -183,28 +234,35 @@ def call_delete(head,tail):
 ########################################################################################################################################################################
 
 #Operate Function to choose the operation
-def operate(head,tail):
-    def make_choice():
-        ch=input("Do you want to conduct more operations??('Y' for yes & 'N' for no): ")
-        if ch=='Y' or ch=='y':
-            operate(head,tail)
-    ch=input("Enter the operation:\n'I' to Insert\n'D' to Delete\n'R' to Reverse\n'T' to Traverse\nYour Choice: ")
+def operate(head,tail):        
+    ch=input("Enter the operation:\n'I' to Insert\n'D' to Delete\n'Sr' to Search\n'U' to Update\n'R' to Reverse\n'St' to Sort\n'T' to Traverse\nYour Choice: ")
     if ch=='I' or ch=='i':
         head,tail=call_insert(head,tail)
-        make_choice()
+        
     elif ch=='D' or ch=='d':
         head,tail=call_delete(head,tail)
-        make_choice()
+        
     elif ch=='R' or ch=='r':
         head,tail=reverse(head,tail)
-        make_choice()
+        
     elif ch=='T' or ch=='t':
         traverse(head)
-        make_choice()
+        
+    elif ch=='U' or ch=='u':
+        update(head)
+        
+    elif ch.upper()=='SR':
+        search(head)
+        
+    elif ch.upper()=='ST':
+        sort(head)
+        
     else:
         print("Invalid Choice!!\nPlease try again...\n")
         operate(head,tail)
-
+    ch=input("Do you want to conduct more operations??('Y' for yes & 'N' for no): ")
+    if ch=='Y' or ch=='y':
+        operate(head,tail)
 #Tail Traverse
 #if True:
     #data=""
