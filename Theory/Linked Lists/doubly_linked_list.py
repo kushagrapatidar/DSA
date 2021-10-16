@@ -112,7 +112,7 @@ def traverse(head):
     print(data+"\n"+posStr)
 
 #Sort Operation
-def sort(head,tail):
+def sort(head,tail): #CONTINUE HERE
     return head,tail
 
 #Search Operation
@@ -255,7 +255,7 @@ def operate(head,tail):
         search(head)
         
     elif ch.upper()=='ST':
-        sort(head)
+        sort(head,tail)
         
     else:
         print("Invalid Choice!!\nPlease try again...\n")
