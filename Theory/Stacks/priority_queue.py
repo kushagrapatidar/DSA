@@ -30,22 +30,7 @@ def insert(array, newNum):
             heapify(array, size, i)
 
 
-# Function to delete an element from the tree
-def deletenode(array, num):
-    size = len(array)
-    #i = 0
-    for i in range(0, size):
-        if num == array[i]:
-            break
-    #print(i)
-    array[i], array[size - 1] = array[size - 1], array[i]
-
-    del array[size - 1]
-
-    for i in range((len(array) // 2) - 1, -1, -1):
-        heapify(array, len(array), i)
-def rootnode(array):
- print(array[0])
+#Driver Code
 arr = []
 
 insert(arr, 3)
