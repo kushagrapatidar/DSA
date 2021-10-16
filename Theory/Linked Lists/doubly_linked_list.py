@@ -32,7 +32,7 @@ def insert_bet(head,pos,data):
         newNode.data=data
         currNode=temp=head
 
-        while currNode.pos<pos-1:
+        while currNode.pos<pos-2:
             currNode=currNode.next
         nextNode=currNode.next
 
@@ -43,8 +43,11 @@ def insert_bet(head,pos,data):
         while temp!=None:
             currPos=temp.pos
             temp=temp.next
-            temp.pos=currPos+1
-            currNode=temp
+            try:
+                temp.pos=currPos+1
+                currNode=temp
+            except:
+                continue
         return currNode
 
 def insert_end(head,tail,data):
@@ -63,11 +66,13 @@ def insert_end(head,tail,data):
 def traverse(head):
     temp=head
     data=""
+    posStr=""
     while temp!=None:
-        data=data+" "+str(temp.data)
+        data+=str(temp.data)+" "
+        posStr+=str(temp.pos)+" "
         temp=temp.next
-    data=data[1:]
-    return data
+
+    return data,posStr
 
 #Driver Code
 head=Node()
@@ -76,10 +81,21 @@ tail=Node()
 tail=head=insert_beg(head,"List")
 head=insert_beg(head,"Linked")
 head=insert_beg(head,"Doubly")
-tail=insert_end(head,tail,"is")
-tail=insert_end(head,tail,"Data")
-tail=insert_end(head,tail,"Structure")
-tail=insert_bet(head,5,"a")
 
-data=traverse(head)
-print(data)
+tail=insert_end(head,tail,"is")
+tail=insert_end(head,tail,"Structure")
+
+tail=insert_bet(head,5,"a")
+tail=insert_bet(head,6,"Data")
+
+data,posStr=traverse(head)
+print(data+"\n"+posStr)
+
+#Tail Traverse
+#if True:
+    #data=""
+    #while tail!=None:
+    #    data=tail.data+" "+data
+    #    tail=tail.prev
+    #data=data[:-1]
+    #print("\n"+data)
