@@ -1,8 +1,5 @@
-#Driver Code: Doubly Linked List
-if True:
-    import doubly_linked_list as dl
 #Driver Code: Binary Tree Height
-'''if True:
+if True:
     from binary_tree_height import find_height
 
     arr=[2,3,9,4,5]
