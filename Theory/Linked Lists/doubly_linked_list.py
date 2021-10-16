@@ -263,6 +263,7 @@ def operate(head,tail):
     ch=input("Do you want to conduct more operations??('Y' for yes & 'N' for no): ")
     if ch=='Y' or ch=='y':
         operate(head,tail)
+
 #Tail Traverse
 #if True:
     #data=""
