@@ -1,9 +1,10 @@
 #Driver Code: Doubly Linked List
 if True:
     from doubly_linked_list import operate
-    operate()
+    head=tail=None
+    operate(head,tail)
     #Test List
-        #beg - 'List'
+        #ins - 'List'
         #beg - 'Linked'
         #end - 'is'
         #end - 'a'

@@ -187,22 +187,27 @@ def call_delete(head,tail):
 ########################################################################################################################################################################
 
 #Operate Function to choose the operation
-def operate():
-    head=None
-    tail=None
-
+def operate(head,tail):
+    def make_choice():
+        ch=input("Do you want to conduct more operations??('Y' for yes & 'N' for no)")
+        if ch=='Y' or ch=='y':
+            operate(head,tail)
     ch=input("Enter the operation:\n'I' to Insert\n'D' to Delete\n'R' to Reverse\n'T' to Traverse\nYour Choice: ")
     if ch=='I' or ch=='i':
         head,tail=call_insert(head,tail)
+        make_choice()
     elif ch=='D' or ch=='d':
         head,tail=call_delete(head,tail)
+        make_choice()
     elif ch=='R' or ch=='r':
         head,tail=reverse(head,tail)
+        make_choice()
     elif ch=='T' or ch=='t':
         traverse(head)
+        make_choice()
     else:
         print("Invalid Choice!!\nPlease try again...\n")
-        operate()
+        operate(head,tail)
 
 #Tail Traverse
 #if True:
