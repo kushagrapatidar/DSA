@@ -85,7 +85,7 @@ def delete_end(tail):
     return tail
 
 def insert(head,tail):
-    data=input('Enter the data: ')
+    data=input('\nEnter the data: ')
     try:
         try:
             data=int(data)
@@ -95,14 +95,15 @@ def insert(head,tail):
                 data=str(data)
     
     if head==None or tail==None:
-        print("The List is Empty!!\nCreating the first Node...")
+        print("\nThe List is Empty!!\nCreating the first Node...\n")
         head=Node()
         head.data=data
         head.pos=1
         tail=head
+        print("Node created successfully!!")
 
     else:
-        ch=input(f"Enter the position of insertion:'B' for Beginnig, 'E' for End or Position between 1 and {tail.pos+1}: ")
+        ch=input(f"Enter the position of insertion:'B' for Beginnig, 'E' for End or Position in numbers greater than or equal to 1: ")
     
         try:
             ch=int(ch)
@@ -120,14 +121,15 @@ def delete(head,tail):
     if head==None or tail==None:
         print("The List is Empty!!")
     else:
-        ch=input(f"Enter the position of deletion:'B' for Beginnig, 'E' for End or Position between 1 and {tail.pos+1}: ")
-        if isinstance(ch, int):
+        ch=input("Enter the position of deletion:'B' for Beginnig, 'E' for End or Position in numbers greater than or equal to 1: ")
+        try:
             ch=int(ch)
             head,tail=delete_bet(head,tail,ch)
-        elif ch=='B' or ch=='b':
-            head=delete_beg(head)
-        elif ch=='E' or ch=='e':
-            tail=delete_end(tail)
+        except ValueError:
+            if ch=='B' or ch=='b':
+                head=delete_beg(head)
+            elif ch=='E' or ch=='e':
+                tail=delete_end(tail)
     
     set_pos(head)
     return head,tail
@@ -149,39 +151,38 @@ def traverse(head):
         data+=str(temp.data)+" "
         posStr+=str(temp.pos)+" "
         temp=temp.next
+    
+    print(data+"\n"+posStr)
 
-    return data,posStr
+def call_insert(head,tail):
+    num=int(input('Enter the number of elements to be inserted: '))
+    for _ in range(num):
+        head,tail=insert(head,tail)
 
-#Driver Code
-head=tail=None
+    print("\nLinked List after Insertion: ")
+    traverse(head)
 
-num=int(input('Enter the number of elements: '))
-for _ in range(num):
-    head,tail=insert(head,tail)
+def call_delete(head,tail):
+    num=int(input('Enter the number of elements to be deleted: '))
+    for _ in range(num):
+        head,tail=delete(head,tail)
+
+    print("\nLinked List after Deletion: ")
+    traverse(head)
+
+
 
 #Test List
-#beg - 'List'
-#beg - 'Linked'
-#end - 'is'
-#end - 'a'
-#1 - 'Doubly'
-#7 - 'Structure'
-#6 - 'Data'
-
-print("Initial Linked List: ")
-data,posStr=traverse(head)
-print(data+"\n"+posStr)
-
-print("\n")
-head,tail=delete_bet(head,tail,5)
-
-head=delete_beg(head)
-
-tail=delete_end(tail)
-
-print("\nLinked List after deletion: ")
-data,posStr=traverse(head)
-print(data+"\n"+posStr)
+    #beg - 'List'
+    #beg - 'Linked'
+    #end - 'is'
+    #end - 'a'
+    #1 - 'Doubly'
+    #7 - 'Structure'
+    #6 - 'Data'
+    #del - 5
+    #del - beg
+    #del - end
 
 #Tail Traverse
 #if True:
