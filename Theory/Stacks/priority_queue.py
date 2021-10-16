@@ -26,15 +26,17 @@ def heapify(arr, n, i):
 def insert(array, newNum):
     size = len(array)
     array.append(newNum)
-    for i in range((size // 2) - 1, -1, -1):
-            heapify(array, size, i)
+    i=size//2
+    while i>-1 and i<=size//2:
+        heapify(array, size, i)
+        i-=1
 
 
 #Driver Code
 arr = []
 
 insert(arr, 3)
-#insert(arr, 4)
+insert(arr, 4)
 #insert(arr, 9)
 #insert(arr, 5)
 #insert(arr, 2)
