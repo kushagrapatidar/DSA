@@ -50,28 +50,6 @@ def insert_end(tail,data):
     tail=newNode
     return tail
 
-#Reverse Operation
-def reverse(head,tail):
-    temp=head
-    while temp!=None:
-        temp.prev,temp.next=temp.next,temp.prev
-        temp=temp.prev
-    head,tail=tail,head
-    set_pos(head)
-    return head,tail
-
-#Traverse Operation
-def traverse(head):
-    temp=head
-    data=""
-    posStr=""
-    while temp!=None:
-        data+=str(temp.data)+" "
-        posStr+=str(temp.pos)+" "
-        temp=temp.next
-    
-    print(data+"\n"+posStr)
-
 ########################################################################################################################################################################
 #Delete Operations
 def delete_beg(head):
@@ -108,6 +86,30 @@ def delete_end(tail):
     tail=temp.prev
     tail.next=None
     return tail
+
+########################################################################################################################################################################
+#Miscellaneous Operations
+#Reverse Operation
+def reverse(head,tail):
+    temp=head
+    while temp!=None:
+        temp.prev,temp.next=temp.next,temp.prev
+        temp=temp.prev
+    head,tail=tail,head
+    set_pos(head)
+    return head,tail
+
+#Traverse Operation
+def traverse(head):
+    temp=head
+    data=""
+    posStr=""
+    while temp!=None:
+        data+=str(temp.data)+" "
+        posStr+=str(temp.pos)+" "
+        temp=temp.next
+    
+    print(data+"\n"+posStr)
 
 ########################################################################################################################################################################
 #Insert Function
@@ -171,6 +173,7 @@ def call_insert(head,tail):
 
     print("\nLinked List after Insertion: ")
     traverse(head)
+    return head,tail
 
 def call_delete(head,tail):
     num=int(input('Enter the number of elements to be deleted: '))
@@ -179,6 +182,7 @@ def call_delete(head,tail):
 
     print("\nLinked List after Deletion: ")
     traverse(head)
+    return head,tail
 
 ########################################################################################################################################################################
 
@@ -186,7 +190,19 @@ def call_delete(head,tail):
 def operate():
     head=None
     tail=None
-    
+
+    ch=input("Enter the operation:\n'I' to Insert\n'D' to Delete\n'R' to Reverse\n'T' to Traverse\nYour Choice: ")
+    if ch=='I' or ch=='i':
+        head,tail=call_insert(head,tail)
+    elif ch=='D' or ch=='d':
+        head,tail=call_delete(head,tail)
+    elif ch=='R' or ch=='r':
+        head,tail=reverse(head,tail)
+    elif ch=='T' or ch=='t':
+        traverse(head)
+    else:
+        print("Invalid Choice!!\nPlease try again...\n")
+        operate()
 
 #Tail Traverse
 #if True:
