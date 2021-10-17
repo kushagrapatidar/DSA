@@ -1,5 +1,5 @@
 #Driver Code: Doubly Linked List
-'''if True:
+if True:
     from doubly_linked_list import operate
     head=tail=None
     operate(head,tail)
