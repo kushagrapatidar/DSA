@@ -4,13 +4,17 @@ if True:
     head=tail=None
     operate(head,tail)
     #Test List
-        #ins - 'List'
+        #ins - 'Lists'
         #beg - 'Linked'
         #end - 'is'
         #end - 'a'
         #1 - 'Doubly'
         #7 - 'Structure'
         #6 - 'Data'
+        #Trav
+        #Srch - 'a'
+        #Updt - 'Lists' to 'List'
+        #Trav
         #del - 5
         #del - beg
         #del - end
