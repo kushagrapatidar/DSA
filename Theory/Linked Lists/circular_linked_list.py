@@ -1,5 +1,4 @@
 class Node:
-    prev=None
     data=None
     next=None
     pos=None
@@ -20,7 +19,7 @@ def set_pos(head):
 def insert_beg(head,data):
     newNode=Node()
     newNode.data=data
-    newNode.next,head.prev=head,newNode
+    newNode.next=head
     head=newNode
     return head
 
@@ -38,15 +37,14 @@ def insert_bet(head,tail,pos,data):
         if nextNode!=None:
             newNode=Node()
             newNode.data=data
-            newNode.prev,currNode.next=currNode,newNode
-            newNode.next,nextNode.prev=nextNode,newNode
+            currNode.next,newNode.next=newNode,nextNode
 
     return head,tail
 
 def insert_end(tail,data):
     newNode=Node()
     newNode.data=data
-    newNode.prev,tail.next=tail,newNode
+    tail.next=newNode
     tail=newNode
     return tail
 
@@ -54,10 +52,8 @@ def insert_end(tail,data):
 #Delete Operations
 def delete_beg(head):
     print(f"Data at the deleted Node: {head.data}")
-    temp=head
-    head=None
+    temp,head=head,None
     head=temp.next
-    head.prev=None
     set_pos(head)
     return head
 
@@ -66,25 +62,28 @@ def delete_bet(head,tail,pos):
         head=delete_beg(head)
     else:
         temp=head
+        prevNode=None
         while temp!=None:
             if temp.pos==pos:
                 print(f"Data at the deleted Node: {temp.data}")
                 break
+            prevNode=temp
             temp=temp.next
         try:
-            temp.prev.next,temp.next.prev=temp.next,temp.prev
+            prevNode.next=temp.next
             temp=None
         except AttributeError:
             tail=delete_end(tail)
     set_pos(head)
     return head,tail
 
-def delete_end(tail):
+def delete_end(head,tail):
     print(f"Data at the deleted Node: {tail.data}")
-    temp=tail
+    temp=head
     tail=None
-    tail=temp.prev
-    tail.next=None
+    while temp.next!=None:
+        temp=temp.next
+    tail=temp
     return tail
 
 ########################################################################################################################################################################
