@@ -73,7 +73,7 @@ def delete_bet(head,tail,pos):
             prevNode.next=temp.next
             temp=None
         except AttributeError:
-            tail=delete_end(tail)
+            tail=delete_end(head,tail)
     set_pos(head)
     return head,tail
 
@@ -90,11 +90,14 @@ def delete_end(head,tail):
 #Miscellaneous Operations
 #Reverse Operation
 def reverse(head,tail):
-    temp=head
-    while temp!=None:
-        temp.prev,temp.next=temp.next,temp.prev
-        temp=temp.prev
-    head,tail=tail,head
+    node_lst=list()
+    while head!=None:
+        node_lst.append(head)
+        head=head.next
+    node_lst.reverse()
+    for _ in range(len(node_lst)-1):
+        node_lst[_].next=node_lst[_+1]
+    head,tail=node_lst[0],node_lst[-1]
     set_pos(head)
     return head,tail
 
@@ -235,7 +238,7 @@ def delete(head,tail):
             if ch=='B' or ch=='b':
                 head=delete_beg(head)
             elif ch=='E' or ch=='e':
-                tail=delete_end(tail)
+                tail=delete_end(head,tail)
     
     set_pos(head)
     return head,tail
