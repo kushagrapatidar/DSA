@@ -132,6 +132,7 @@ def search(head,data=None):
         if temp.data==data:
             pos.append(temp.pos)
         temp=temp.next
+    print(f'{data} found at the positions {pos} in the list.')
     return pos
 
 #Update Operation
@@ -161,6 +162,7 @@ def update(head):
         while temp!=None:
             if temp.pos in pos:
                 temp.data=newdata
+            temp=temp.next
     
 ########################################################################################################################################################################
 #Insert Function
@@ -183,7 +185,7 @@ def insert(head,tail):
         print("Node created successfully!!")
 
     else:
-        ch=input(f"Enter the position of insertion:'B' for Beginnig, 'E' for End or Position in numbers greater than or equal to 1: ")
+        ch=input("Enter the position of insertion:'B' for Beginnig, 'E' for End or Position in numbers greater than or equal to 1: ")
     
         try:
             ch=int(ch)
@@ -254,7 +256,7 @@ def operate(head,tail):
         search(head)
         
     elif ch.upper()=='ST':
-        sort(head,tail)
+        head,tail=sort(head,tail)
         
     else:
         print("Invalid Choice!!\nPlease try again...\n")
