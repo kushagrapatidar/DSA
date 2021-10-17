@@ -1,5 +1,5 @@
 #Driver Code: Doubly Linked List
-if True:
+'''if True:
     from doubly_linked_list import operate
     head=tail=None
     operate(head,tail)
@@ -19,3 +19,6 @@ if True:
         #Del - beg
         #Del - end
     #'''
+'''arr=['List','1','3','2','10','0']
+arr.sort()
+print(arr)#'''

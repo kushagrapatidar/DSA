@@ -110,9 +110,30 @@ def traverse(head):
         temp=temp.next
     
     print(data+"\n"+posStr)
+    return data,posStr
 
 #Sort Operation
 def sort(head,tail): #CONTINUE HERE
+    data,posStr=traverse(head)
+    Bool=False
+    data=data.split()
+    for _ in data:
+        if isinstance(_,str):
+            Bool=True
+
+    if Bool:
+        data.sort()
+    
+    else:
+        for _ in data:
+            if isinstance(_,float):
+                Bool=True
+        if Bool:
+            data=float(data)
+        else:
+            data=int(data)
+        data.sort()
+
     return head,tail
 
 #Search Operation
@@ -169,13 +190,6 @@ def update(head):
 #Insert Function
 def insert(head,tail):
     data=input('\nEnter the data: ')
-    try:
-        try:
-            data=int(data)
-        except ValueError:
-            data=float(data)
-    except ValueError:
-                data=str(data)
     
     if head==None or tail==None:
         print("\nThe List is Empty!!\nCreating the first Node...\n")
