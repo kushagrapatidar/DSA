@@ -132,7 +132,7 @@ def search(head,data=None):
         if temp.data==data:
             pos.append(temp.pos)
         temp=temp.next
-    print(f'{data} found at the positions {pos} in the list.')
+    print(f"'{data}' found at the positions {pos} in the list.")
     return pos
 
 #Update Operation
@@ -163,6 +163,7 @@ def update(head):
             if temp.pos in pos:
                 temp.data=newdata
             temp=temp.next
+    print("List updated successfully!!")
     
 ########################################################################################################################################################################
 #Insert Function
