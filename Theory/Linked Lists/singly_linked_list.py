@@ -281,12 +281,12 @@ def operate(head,tail):
     elif ch.upper()=='SR':
         search(head)
         
+    elif ch.upper()=='ST':
+        head,tail=sort(head,tail)
+        
     else:
         print("Invalid Choice!!\nPlease try again...\n")
         operate(head,tail)
     ch=input("Do you want to conduct more operations??('Y' for yes & 'N' for no): ")
     if ch=='Y' or ch=='y':
         operate(head,tail)
-
-    '''elif ch.upper()=='ST':
-        head,tail=sort(head,tail)#'''
