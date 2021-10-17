@@ -113,7 +113,7 @@ def traverse(head):
     return data,posStr
 
 #Sort Operation
-def sort(head,tail): #CONTINUE HERE
+def sort_data(head):
     data,posStr=traverse(head)
     Bool=False
     data=data.split()
@@ -133,7 +133,16 @@ def sort(head,tail): #CONTINUE HERE
         else:
             data=int(data)
         data.sort()
+    return data
 
+def sort(head,tail): #CONTINUE HERE
+    data=sort_data(head)
+    temp1=temp2=head
+    index=0
+    while temp1!=None:
+        while temp2!=None:
+            if temp2.data in data:
+                index=data.index(temp2)
     return head,tail
 
 #Search Operation
