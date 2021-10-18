@@ -228,7 +228,7 @@ def insert(head,tail):
             elif ch=='E' or ch=='e':
                 tail=insert_end(tail,data)
     
-    set_pos(head)
+        set_pos(head)
     return head,tail
 
 #Delete Function
