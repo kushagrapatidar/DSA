@@ -280,7 +280,8 @@ def operate(head,tail):
         search(head)
         
     elif ch.upper()=='ST':
-        head,tail=sort(head,tail)
+        print("Sort Under Developement!!")
+        #head,tail=sort(head,tail)
         
     else:
         print("Invalid Choice!!\nPlease try again...\n")

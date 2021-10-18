@@ -82,8 +82,9 @@ def delete_end(head,tail):
     temp=head
     tail=None
     while temp.next!=None:
+        tail=temp
         temp=temp.next
-    tail=temp
+    tail.next=None
     return tail
 
 ########################################################################################################################################################################
@@ -96,8 +97,10 @@ def reverse(head,tail):
         head=head.next
     node_lst.reverse()
     for _ in range(len(node_lst)-1):
-        node_lst[_].next=node_lst[_+1]
+        currNode,nextNode=node_lst[_],node_lst[_+1]
+        currNode.next=nextNode
     head,tail=node_lst[0],node_lst[-1]
+    tail.next=None
     set_pos(head)
     return head,tail
 
@@ -227,18 +230,15 @@ def insert(head,tail):
 
 #Delete Function
 def delete(head,tail):
-    if head==None or tail==None:
-        print("The List is Empty!!")
-    else:
-        ch=input("Enter the position of deletion:'B' for Beginnig, 'E' for End or Position in numbers greater than or equal to 1: ")
-        try:
-            ch=int(ch)
-            head,tail=delete_bet(head,tail,ch)
-        except ValueError:
-            if ch=='B' or ch=='b':
-                head=delete_beg(head)
-            elif ch=='E' or ch=='e':
-                tail=delete_end(head,tail)
+    ch=input("Enter the position of deletion:'B' for Beginnig, 'E' for End or Position in numbers greater than or equal to 1: ")
+    try:
+        ch=int(ch)
+        head,tail=delete_bet(head,tail,ch)
+    except ValueError:
+        if ch=='B' or ch=='b':
+            head=delete_beg(head)
+        elif ch=='E' or ch=='e':
+            tail=delete_end(head,tail)
     
     set_pos(head)
     return head,tail
@@ -263,26 +263,46 @@ def call_delete(head,tail):
 #Operate Function to choose the operation
 def operate(head,tail):        
     ch=input("Enter the operation:\n'I' to Insert\n'D' to Delete\n'Sr' to Search\n'U' to Update\n'R' to Reverse\n'St' to Sort\n'T' to Traverse\nYour Choice: ")
+    empty_list="The List is Empty!!"
     if ch=='I' or ch=='i':
         head,tail=call_insert(head,tail)
         
     elif ch=='D' or ch=='d':
-        head,tail=call_delete(head,tail)
+        if head==None or tail==None:
+            print(empty_list)
+        else:
+            head,tail=call_delete(head,tail)
         
     elif ch=='R' or ch=='r':
-        head,tail=reverse(head,tail)
+        if head==None or tail==None:
+            print(empty_list)
+        else:
+            head,tail=reverse(head,tail)
         
     elif ch=='T' or ch=='t':
-        traverse(head)
+        if head==None or tail==None:
+            print(empty_list)
+        else:
+            traverse(head)
         
     elif ch=='U' or ch=='u':
-        update(head)
+        if head==None or tail==None:
+            print(empty_list)
+        else:
+            update(head)
         
     elif ch.upper()=='SR':
-        search(head)
+        if head==None or tail==None:
+            print(empty_list)
+        else:        
+            search(head)
         
     elif ch.upper()=='ST':
-        head,tail=sort(head,tail)
+        if head==None or tail==None:
+            print(empty_list)
+        else:
+            print("Sort Under Developement!!")
+            #head,tail=sort(head,tail)
         
     else:
         print("Invalid Choice!!\nPlease try again...\n")
