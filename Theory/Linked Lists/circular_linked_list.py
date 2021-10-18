@@ -13,7 +13,8 @@ def set_pos(head):
         currPos=temp.pos
         temp=temp.next
         try:
-            temp.pos=currPos+1
+            if temp!=head:
+                temp.pos=currPos+1
         except AttributeError:
             continue
 
@@ -46,13 +47,13 @@ def insert_end(head,tail,data):
 #Delete Operations
 def delete_bet(head,tail,pos):
     if pos==1:
-        head=delete_end(head,tail)
+        print(f"Data at the deleted Node: {head.data}")
+        head=head.next
+        tail.next=head
     else:
         temp=head
-        first=True
         prevNode=None
-        while temp!=head or first:
-            first=False
+        while temp!=None:
             if temp.pos==pos:
                 print(f"Data at the deleted Node: {temp.data}")
                 break
@@ -63,7 +64,7 @@ def delete_bet(head,tail,pos):
             temp=None
         except AttributeError:
             tail=delete_end(head,tail)
-    set_pos(head)
+        set_pos(head)
     return head,tail
 
 def delete_end(head,tail):
