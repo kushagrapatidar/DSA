@@ -5,9 +5,11 @@ class Node:
 
 def set_pos(head):
     head.pos=1
-    temp=head
-    currPos=1
-    while temp!=None:
+    temp=head.next
+    currPos=2
+    head.pos=currPos-1
+    temp.pos=currPos
+    while temp!=head:
         currPos=temp.pos
         temp=temp.next
         try:
@@ -16,18 +18,9 @@ def set_pos(head):
             continue
 
 #Insert Operations    
-def insert_beg(head,data):
-    newNode=Node()
-    newNode.data=data
-    newNode.next=head
-    head=newNode
-    return head
-
 def insert_bet(head,tail,pos,data):
-    if pos==1:
-        head=insert_beg(head,data)
-    elif pos>tail.pos:
-        tail=insert_end(tail,data)
+    if pos==1 or pos>tail.pos:
+        head=insert_end(head,tail,data)
     else:            
         currNode=head
         while currNode.pos<pos-1:
@@ -41,25 +34,19 @@ def insert_bet(head,tail,pos,data):
 
     return head,tail
 
-def insert_end(tail,data):
+def insert_end(head,tail,data):
     newNode=Node()
     newNode.data=data
+    newNode.next=head
     tail.next=newNode
     tail=newNode
     return tail
 
 ########################################################################################################################################################################
 #Delete Operations
-def delete_beg(head):
-    print(f"Data at the deleted Node: {head.data}")
-    temp,head=head,None
-    head=temp.next
-    set_pos(head)
-    return head
-
 def delete_bet(head,tail,pos):
     if pos==1:
-        head=delete_beg(head)
+        head=delete_end(head,tail)
     else:
         temp=head
         prevNode=None
@@ -80,11 +67,11 @@ def delete_bet(head,tail,pos):
 def delete_end(head,tail):
     print(f"Data at the deleted Node: {tail.data}")
     temp=head
-    tail=None
-    while temp.next!=None:
-        tail=temp
+    while temp.next!=tail:
         temp=temp.next
-    tail.next=None
+    temp.next=head
+    tail=None
+    tail=temp
     return tail
 
 ########################################################################################################################################################################
@@ -92,15 +79,17 @@ def delete_end(head,tail):
 #Reverse Operation
 def reverse(head,tail):
     node_lst=list()
-    while head!=None:
-        node_lst.append(head)
-        head=head.next
+    temp=head.next
+    node_lst.append(head)
+    while temp!=head:
+        node_lst.append(temp)
+        temp=temp.next
     node_lst.reverse()
     for _ in range(len(node_lst)-1):
         currNode,nextNode=node_lst[_],node_lst[_+1]
         currNode.next=nextNode
     head,tail=node_lst[0],node_lst[-1]
-    tail.next=None
+    tail.next=head
     set_pos(head)
     return head,tail
 
@@ -109,7 +98,12 @@ def traverse(head):
     temp=head
     data=""
     posStr=""
-    while temp!=None:
+    
+    data+=str(temp.data)+" "
+    posStr+=str(temp.pos)+" "
+    temp=temp.next
+    
+    while temp!=head:
         data+=str(temp.data)+" "
         posStr+=str(temp.pos)+" "
         temp=temp.next
@@ -167,7 +161,10 @@ def search(head,data=None):
         if temp.data==data:
             pos.append(temp.pos)
         temp=temp.next
-    print(f"'{data}' found at the positions {pos} in the list.")
+    if len(pos)!=0:
+        print(f"'{data}' found at the positions {pos} in the list.")
+    else:
+        print(f"{data} is not in the list!!")
     return pos
 
 #Update Operation
@@ -214,30 +211,26 @@ def insert(head,tail):
         print("Node created successfully!!")
 
     else:
-        ch=input("Enter the position of insertion:'B' for Beginnig, 'E' for End or Position in numbers greater than or equal to 1: ")
+        ch=input("Enter the position of insertion:'E' for End or Position in numbers greater than or equal to 1: ")
     
         try:
             ch=int(ch)
             head,tail=insert_bet(head,tail,ch,data)
         except ValueError:
-            if ch=='B' or ch=='b':
-                head=insert_beg(head,data)
-            elif ch=='E' or ch=='e':
-                tail=insert_end(tail,data)
+            if ch=='E' or ch=='e':
+                tail=insert_end(head,tail,data)
     
     set_pos(head)
     return head,tail
 
 #Delete Function
 def delete(head,tail):
-    ch=input("Enter the position of deletion:'B' for Beginnig, 'E' for End or Position in numbers greater than or equal to 1: ")
+    ch=input("Enter the position of deletion:'E' for End or Position in numbers greater than or equal to 1: ")
     try:
         ch=int(ch)
         head,tail=delete_bet(head,tail,ch)
     except ValueError:
-        if ch=='B' or ch=='b':
-            head=delete_beg(head)
-        elif ch=='E' or ch=='e':
+        if ch=='E' or ch=='e':
             tail=delete_end(head,tail)
     
     set_pos(head)

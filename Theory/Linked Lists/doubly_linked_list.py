@@ -162,7 +162,10 @@ def search(head,data=None):
         if temp.data==data:
             pos.append(temp.pos)
         temp=temp.next
-    print(f"'{data}' found at the positions {pos} in the list.")
+    if len(pos)!=0:
+        print(f"'{data}' found at the positions {pos} in the list.")
+    else:
+        print(f"{data} is not in the list!!")
     return pos
 
 #Update Operation
