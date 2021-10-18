@@ -49,8 +49,10 @@ def delete_bet(head,tail,pos):
         head=delete_end(head,tail)
     else:
         temp=head
+        first=True
         prevNode=None
-        while temp!=None:
+        while temp!=head or first:
+            first=False
             if temp.pos==pos:
                 print(f"Data at the deleted Node: {temp.data}")
                 break
@@ -156,8 +158,10 @@ def search(head,data=None):
             data=float(data)
     except ValueError:
         data=str(data)
-    temp=head
-    while temp!=None:
+    temp=head.next
+    if head.data==data:
+        pos.append(head.pos)
+    while temp!=head:
         if temp.data==data:
             pos.append(temp.pos)
         temp=temp.next
@@ -190,8 +194,10 @@ def update(head):
         print(f"The list does not contain any data,{olddata}")
     
     else:
-        temp=head
-        while temp!=None:
+        temp=head.next
+        if head.pos==pos:
+            head.data=newdata
+        while temp!=head:
             if temp.pos in pos:
                 temp.data=newdata
             temp=temp.next
