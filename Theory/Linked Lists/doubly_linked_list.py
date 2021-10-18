@@ -197,7 +197,27 @@ def update(head):
                 temp.data=newdata
             temp=temp.next
     print("List updated successfully!!")
+
+#Swap with head Operation
+def swap_with_head(head):
+    pos=input('Enter the position of the node to be swapped with head node: ')
+    temp=head
+    while temp!=None:
+        if temp.pos==pos:
+            break
+        temp=temp.next
+    if temp==None:
+        print(f"Position {pos} does not exist!!")
+        return head
     
+    prev=temp.prev
+    head.prev,temp.prev=temp.prev,head.prev
+    head.next,temp.next=temp.next,head.next
+    head.pos,temp.pos=temp.pos,head.pos
+    prev.next=head
+    head=temp
+    return head
+
 ########################################################################################################################################################################
 #Insert Function
 def insert(head,tail):
@@ -260,7 +280,7 @@ def call_delete(head,tail):
 ########################################################################################################################################################################
 #Operate Function to choose the operation
 def operate(head,tail):        
-    ch=input("Enter the operation:\n'I' to Insert\n'D' to Delete\n'Sr' to Search\n'U' to Update\n'R' to Reverse\n'St' to Sort\n'T' to Traverse\nYour Choice: ")
+    ch=input("Enter the operation:\n'I' to Insert\n'D' to Delete\n'Sr' to Search\n'U' to Update\n'R' to Reverse\n'St' to Sort\n'T' to Traverse\n'Sw' to Swap a node with head node\nYour Choice: ")
     empty_list="The List is Empty!!"
     if ch=='I' or ch=='i':
         head,tail=call_insert(head,tail)
@@ -301,7 +321,13 @@ def operate(head,tail):
         else:
             print("Sort Under Developement!!")
             #head,tail=sort(head,tail)
-        
+
+    elif ch.upper()=='SW':
+        if head==None or tail==None:
+            print(empty_list)
+        else:
+            swap_with_head(head)
+
     else:
         print("Invalid Choice!!\nPlease try again...\n")
         operate(head,tail)
