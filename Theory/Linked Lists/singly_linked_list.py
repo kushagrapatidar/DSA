@@ -82,8 +82,9 @@ def delete_end(head,tail):
     temp=head
     tail=None
     while temp.next!=None:
+        tail=temp
         temp=temp.next
-    tail=temp
+    tail.next=None
     return tail
 
 ########################################################################################################################################################################
@@ -96,8 +97,10 @@ def reverse(head,tail):
         head=head.next
     node_lst.reverse()
     for _ in range(len(node_lst)-1):
-        node_lst[_].next=node_lst[_+1]
+        currNode,nextNode=node_lst[_],node_lst[_+1]
+        currNode.next=nextNode
     head,tail=node_lst[0],node_lst[-1]
+    tail.next=None
     set_pos(head)
     return head,tail
 
