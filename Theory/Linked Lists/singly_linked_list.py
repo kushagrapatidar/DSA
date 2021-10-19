@@ -205,7 +205,7 @@ def update(head):
 
 #Swap with head Operation
 def swap_with_head(head):
-    pos=input('Enter the position of the node to be swapped with head node: ')
+    pos=int(input('Enter the position of the node to be swapped with head node: '))
     temp=head
     while temp!=None:
         if temp.pos==pos:
@@ -215,11 +215,13 @@ def swap_with_head(head):
     if temp==None:
         print(f"Position {pos} does not exist!!")
         return head
+
+    if prev!=head:
+        prev.next=head
     
-    head.next,temp.next=temp.next,head.next
-    head.pos,temp.pos=temp.pos,head.pos
-    prev.next=head
-    head=temp
+    
+
+    set_pos(head)
     return head
 
 ########################################################################################################################################################################
@@ -330,8 +332,9 @@ def operate(head,tail):
         if head==None or tail==None:
             print(empty_list)
         else:
-            swap_with_head(head)
-            
+            print("Swap Under Developement!!")
+            #swap_with_head(head)
+
     else:
         print("Invalid Choice!!\nPlease try again...\n")
         operate(head,tail)

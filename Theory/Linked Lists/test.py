@@ -1,5 +1,5 @@
 #Driver Code: Singly Linked List
-'''if True:
+if True:
     from singly_linked_list import operate
     head=tail=None
     operate(head,tail)
@@ -49,7 +49,7 @@
     #'''
 
 #Driver Code: Circular Linked List
-if True:
+'''if True:
     from circular_linked_list import operate
     head=tail=None
     operate(head,tail)
