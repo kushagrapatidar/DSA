@@ -1,4 +1,4 @@
-def find_height(arr,height,i=0):
+def find_height(head,height,i=0):
     if 2*i+1<len(arr):
         height+=1
         i=2*i+1
