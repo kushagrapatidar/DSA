@@ -1,12 +1,11 @@
-def find_height(arr,height,i=0):
-    if 2*i+1<len(arr):
-        height+=1
-        i=2*i+1
-        height=find_height(arr,height,i)
-    return height
-
-def calc_height(tree_head):
-    while tree_head!=None:
-        print(tree_head.data+" ")
-        tree_head=tree_head.left
-    return 0
+def find_height(tree_head):
+    left=right=tree_head
+    max_height=min_height=0
+    while left!=None or right!=None:
+        if left!=None:
+            max_height+=1
+            left=left.left
+        if right!=None:
+            min_height+=1
+            right=right.next
+    return max_height,min_height
