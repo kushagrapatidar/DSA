@@ -1,5 +1,5 @@
 #Driver Code: Singly Linked List
-if True:
+'''if True:
     from singly_linked_list import operate
     head=tail=None
     operate(head,tail)
@@ -72,3 +72,9 @@ if True:
         #Rev
         #Trav
     #'''
+
+#Driver Code: Binary Tree Height
+if True:
+    from binary_tree_height import calc_height
+    print(f"height of the tree is {calc_height()}")
+    #arr=[2,3,9,4,5,10,11,6]
