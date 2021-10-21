@@ -18,7 +18,15 @@ def set_pos(head):
         except AttributeError:
             continue
 
-#Insert Operations    
+#Insert Operations  
+def insert_beg(head,tail,data):
+    newNode=Node()
+    newNode.data=data
+    newNode.next=head
+    tail.next=newNode
+    head=newNode
+    return head
+
 def insert_bet(head,tail,pos,data):
     if pos==1 or pos>tail.pos:
         head=insert_end(head,tail,data)
@@ -218,12 +226,14 @@ def insert(head,tail):
         print("Node created successfully!!")
 
     else:
-        ch=input("Enter the position of insertion:'E' for End or Position in numbers greater than or equal to 1: ")
+        ch=input("Enter the position of insertion: 'B' for Beggining 'E' for End or Position in numbers greater than or equal to 1: ")
     
         try:
             ch=int(ch)
             head,tail=insert_bet(head,tail,ch,data)
         except ValueError:
+            if ch=='B' or ch=='b':
+                head=insert_beg(head,tail,data)
             if ch=='E' or ch=='e':
                 tail=insert_end(head,tail,data)
     
