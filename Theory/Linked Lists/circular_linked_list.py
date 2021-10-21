@@ -53,6 +53,12 @@ def insert_end(head,tail,data):
 
 ########################################################################################################################################################################
 #Delete Operations
+def delete_beg(head,tail):
+    print(f"Data at the deleted Node: {head.data}")
+    tail.next=head.next
+    head=head.next
+    return head
+
 def delete_bet(head,tail,pos):
     if pos==1:
         print(f"Data at the deleted Node: {head.data}")
@@ -226,7 +232,7 @@ def insert(head,tail):
         print("Node created successfully!!")
 
     else:
-        ch=input("Enter the position of insertion: 'B' for Beggining 'E' for End or Position in numbers greater than or equal to 1: ")
+        ch=input("Enter the position of insertion: 'B' for Beggining or 'E' for End or Position in numbers greater than or equal to 1: ")
     
         try:
             ch=int(ch)
@@ -242,15 +248,21 @@ def insert(head,tail):
 
 #Delete Function
 def delete(head,tail):
-    ch=input("Enter the position of deletion:'E' for End or Position in numbers greater than or equal to 1: ")
-    try:
-        ch=int(ch)
-        head,tail=delete_bet(head,tail,ch)
-    except ValueError:
-        if ch=='E' or ch=='e':
-            tail=delete_end(head,tail)
+    if head==None or tail==None:
+        print('List is empty!!')
+    else:
+        ch=input("Enter the position of deletion: 'B' for Beggining or 'E' for End or Position in numbers greater than or equal to 1: ")
+        try:
+            ch=int(ch)
+            head,tail=delete_bet(head,tail,ch)
+        except ValueError:
+            if ch=='B' or ch=='b':
+                head=delete_beg(head,tail)
+            if ch=='E' or ch=='e':
+                tail=delete_end(head,tail)
     
-    set_pos(head)
+        if head!=None and tail!=None:
+            set_pos(head)
     return head,tail
 
 ########################################################################################################################################################################
