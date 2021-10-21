@@ -20,16 +20,16 @@ def insert_end(tail,data):
 
 def create_tree(head):
     tree_lst=[]
-    tree_node=TreeNode()
     while head!=None:
         tree_lst.append(head)
         head=head.next
     tree=[]
     for i in range(len(tree_lst)):
+        tree_node=TreeNode()
         tree_node.data=tree_lst[i].data
         tree.append(tree_node)
-
-    for i in range((len(tree)-1)//2):
+    #[print(_.data,end=" ") for _ in tree_lst]
+    for i in range(len(tree)//2):
         try:
             tree[i].left,tree[i].right=tree[2*i+1],tree[2*i+2]
         except IndexError:
