@@ -53,7 +53,7 @@
     from circular_linked_list import operate
     head=tail=None
     operate(head,tail)
-    #Test List~~~~~~~
+    #Test List
         #Ins - 'Lists'
         #Ins - beg - 'Linked'
         #Ins - end - 'is'
@@ -79,4 +79,5 @@
     from binary_tree_height import find_height_ll
     tree_head=make_tree()
     find_height_ll(tree_head)
-    #arr=[2,3,9,4,5,10,11,6] '''
+    #arr=[2,3,9,4,5,10,11,6] 
+    #max_height = 3, min_height = 2 '''
