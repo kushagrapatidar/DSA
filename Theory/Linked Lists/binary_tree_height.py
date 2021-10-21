@@ -33,8 +33,3 @@ def find_height_lst(lst):
         print(f"Maximum and Minimum heights of the tree are {max_height,min_height}")
 
     return max_height,min_height
-
-#Function to call find_height_ll
-def get_height_ll(tree_head):
-
-    return max_height,min_height
