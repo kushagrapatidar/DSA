@@ -76,5 +76,7 @@
 #Driver Code: Binary Tree Height
 if True:
     from binary_tree_height import calc_height
-    print(f"height of the tree is {calc_height()}")
+    from tree import make_tree
+    tree_head=make_tree()
+    print(f"height of the tree is {calc_height(tree_head)}")
     #arr=[2,3,9,4,5,10,11,6]

@@ -5,5 +5,5 @@ def find_height(arr,height,i=0):
         height=find_height(arr,height,i)
     return height
 
-def calc_height():
+def calc_height(head):
     return None
