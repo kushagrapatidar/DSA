@@ -1,4 +1,4 @@
-class Tree:
+class TreeNode:
     data=None
     right=None
     left=None
@@ -19,21 +19,33 @@ def insert_end(tail,data):
     return tail
 
 def create_tree(head):
-    tree=[]
+    tree_lst=[]
+    tree_node=TreeNode()
     while head!=None:
-        tree.append(head)
+        tree_lst.append(head)
         head=head.next
-    
+    tree=[]
+    for i in range(len(tree_lst)):
+        tree_node.data=tree_lst[i].data
+        tree.append(tree_node)
+
+    for i in range((len(tree)-1)//2):
+        try:
+            tree[i].left,tree[i].right=tree[2*i+1],tree[2*i+2]
+        except IndexError:
+            tree[i].left=tree[2*i+1]
     tree_head=tree[0]
     return tree_head
 
 def make_tree():
-    ch=input("Enter the number of elements: ")
+    ch=int(input("Enter the number of elements: "))
     head=tail=None
     data=input('Enter the data: ')
     head=tail=insert_end(tail,data)
     while ch>1:
         data=input('Enter the data: ')
-        insert_end(tail,data)
+        tail=insert_end(tail,data)
+        ch-=1
+
     tree_head=create_tree(head)
     return  tree_head

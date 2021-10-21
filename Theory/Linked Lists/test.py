@@ -79,4 +79,4 @@ if True:
     from tree import make_tree
     tree_head=make_tree()
     print(f"height of the tree is {calc_height(tree_head)}")
-    #arr=[2,3,9,4,5,10,11,6]
+    #arr=[2,3,9,4,5,10,11,6] '''
