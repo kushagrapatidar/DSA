@@ -74,7 +74,7 @@
     #'''
 
 #Driver Code: Binary Tree Height
-if True:
+'''if True:
     from tree import make_tree
     from binary_tree_height import find_height_ll
     tree_head=make_tree()
