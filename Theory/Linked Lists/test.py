@@ -78,9 +78,5 @@ if True:
     from tree import make_tree
     from binary_tree_height import find_height_ll
     tree_head=make_tree()
-    max_height,min_height=find_height_ll(tree_head)
-    if max_height==-1:
-        print("There are no Nodes")
-    else:
-        print(f"Maximum and Minimum heights of the tree are {max_height,min_height}")
+    find_height_ll(tree_head)
     #arr=[2,3,9,4,5,10,11,6] '''
