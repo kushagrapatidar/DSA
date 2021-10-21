@@ -23,9 +23,11 @@ def find_height_lst(lst):
             j=2*j+2
     return max_height,min_height
 
-def get_height(tree_head):
+#Function to call find_height_ll
+def get_height_ll(tree_head):
     max_height,min_height=find_height_ll(tree_head)
     if max_height==-1:
         print("There are no Nodes")
     else:
         print(f"Maximum and Minimum heights of the tree are {max_height,min_height}")
+    return max_height,min_height
