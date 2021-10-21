@@ -7,5 +7,5 @@ def find_height(tree_head):
             left=left.left
         if right!=None:
             min_height+=1
-            right=right.next
+            right=right.right
     return max_height,min_height
