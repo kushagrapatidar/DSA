@@ -1,7 +1,7 @@
 #Height of a Binary Tree(Linked List)
 def find_height_ll(tree_head):
     left=right=tree_head
-    max_height=min_height=-1
+    max_height=min_height=-1       
     while left!=None or right!=None:
         if left!=None:
             max_height+=1
@@ -9,6 +9,9 @@ def find_height_ll(tree_head):
         if right!=None:
             min_height+=1
             right=right.right
+            
+    if min_height==0 and max_height>0:
+        min_height=max_height
 
     if max_height==-1:
         print("There are no Nodes")
@@ -26,6 +29,8 @@ def find_height_lst(lst):
         if 2*j+2<len(lst):
             min_height+=1
             j=2*j+2
+    if len(lst)==1:
+        min_height=max_height
 
     if max_height==-1:
         print("There are no Nodes")
