@@ -79,7 +79,8 @@ if True:
     from binary_tree_height import find_height_ll
     tree_head=make_tree()
     find_height_ll(tree_head)
-    #arr=[2,3,9,4]
-    #max_height = 2, min_height=1
-    #arr=[2,3,9,4,5,10,11,6] 
-    #max_height = 3, min_height = 2 '''
+    #Test Cases:
+        #arr=[2,3,9,4]
+        #max_height = 2, min_height=1
+        #arr=[2,3,9,4,5,10,11,6] 
+        #max_height = 3, min_height = 2 '''
