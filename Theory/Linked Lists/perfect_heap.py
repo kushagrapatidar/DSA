@@ -6,6 +6,6 @@ def check_heap(tree_root):
         return True
     
     if tree_root.left!=None and tree_root.right!=None:
-        return check_heap(tree_root.left) and check_heap(tree_root.right)
+        return (check_heap(tree_root.left) and check_heap(tree_root.right))
     
     return False
