@@ -78,8 +78,18 @@ if True:
     from tree import make_tree
     from binary_tree_height import find_height_ll
     from heapyfy import heapyfy
+    def print_tree(tree_root):
+        left=tree_root.left
+        right=tree_root.right
+        print(tree_root.data)
+        if left!=None:
+            print_tree(left)
+        if right!=None:
+            print_tree(right)
+
     tree_root=make_tree()
     tree_root=heapyfy(tree_root)
+    print_tree(tree_root)
     find_height_ll(tree_root)
     #Test Cases:
         #arr=[2,3,9,4]
