@@ -87,19 +87,20 @@ if True:
         if right!=None:
             print(right.data,end=" ")
         
+        print("\n")
         if left!=None:
             print_tree(left)
-        print("\r")
+        print("\n")
         if right!=None:
             print_tree(right)
 
     tree_root=make_tree()
     tree_root=heapyfy(tree_root)
-    print(tree_root.data)
-    print_tree(tree_root)
+    #print(tree_root.data)
+    #print_tree(tree_root)
     find_height_ll(tree_root)
     #Test Cases:
         #arr=[2,3,9,4]
         #max_height = 2, min_height=1
-        #arr=[2,3,9,4,5,10,11,6] 
+        #arr=[2,3,9,4,5,10,11,6]
         #max_height = 3, min_height = 2 '''
