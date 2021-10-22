@@ -78,6 +78,7 @@ if True:
     from tree import make_tree
     from binary_tree_height import find_height_ll
     from heapyfy import heapyfy
+    from perfect_heap import check_heap
     def print_tree(tree_root):
         left=tree_root.left
         right=tree_root.right
@@ -96,6 +97,11 @@ if True:
 
     tree_root=make_tree()
     tree_root=heapyfy(tree_root)
+    val=check_heap(tree_root)
+    if val:
+        print("Perfect")
+    else:
+        print("Not Perfect")
     #print(tree_root.data)
     #print_tree(tree_root)
     find_height_ll(tree_root)

@@ -5,7 +5,7 @@ def check_heap(tree_root):
 
     if left.left!=None and left.right!=None and right.left!=None and right.right!=None:
         if tree_root==None:
-            return False
+            return True
     
         if left==None and right==None:
             return True
