@@ -99,6 +99,7 @@ if True:
     #print(tree_root.data)
     #print_tree(tree_root)
     max_height,min_height=find_height_ll(tree_root)
+    
     val=(max_height==min_height)
     if val:
         print("Perfect")
