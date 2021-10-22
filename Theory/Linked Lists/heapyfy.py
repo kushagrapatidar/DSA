@@ -1,6 +1,7 @@
 def heapyfy(tree_root):
     right=tree_root.right
     left=tree_root.left
+    
     if right!=None:
         right=heapyfy(right)
     if left!=None:
