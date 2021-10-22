@@ -17,7 +17,7 @@ def heapyfy(tree_root):
             right.right,right.left=tree_root,left
             tree_root=right
 
-    elif right!=None:
+    elif right==None:
         if left.data>tree_root.data:
             tree_root.right,tree_root.left=left.right,left.left
             left.left,left.right=tree_root,right
