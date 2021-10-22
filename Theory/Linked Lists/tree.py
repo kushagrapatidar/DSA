@@ -11,7 +11,7 @@ def insert_end(head,tail,data):
     newNode=Node()
     newNode.data=data
     if tail==None:
-        heaf=tail=newNode
+        head=tail=newNode
     else:
         tail.next=newNode
         tail=newNode
