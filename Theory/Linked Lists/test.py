@@ -84,6 +84,7 @@ if True:
         print(tree_root.data)
         if left!=None:
             print_tree(left)
+        print("\n")
         if right!=None:
             print_tree(right)
 
