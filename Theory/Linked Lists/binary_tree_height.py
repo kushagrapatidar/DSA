@@ -1,6 +1,6 @@
 #Height of a Binary Tree(Linked List)
-def find_height_ll(tree_head):
-    left=right=tree_head
+def find_height_ll(tree_tree_root):
+    left=right=tree_tree_root
     max_height=min_height=-1       
     while left!=None or right!=None:
         if left!=None:

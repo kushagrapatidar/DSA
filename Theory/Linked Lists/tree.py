@@ -7,22 +7,22 @@ class Node:
     next=None
 
 #Insert Operations    
-def insert_end(head,tail,data):
+def insert_end(tree_root,leaf,data):
     newNode=Node()
     newNode.data=data
-    if tail==None:
-        head=tail=newNode
+    if leaf==None:
+        tree_root=leaf=newNode
     else:
-        tail.next=newNode
-        tail=newNode
+        leaf.next=newNode
+        leaf=newNode
     
-    return head,tail
+    return tree_root,leaf
 
-def create_tree(head):
+def create_tree(tree_root):
     tree_lst=[]
-    while head!=None:
-        tree_lst.append(head)
-        head=head.next
+    while tree_root!=None:
+        tree_lst.append(tree_root)
+        tree_root=tree_root.next
     tree=[]
     for i in range(len(tree_lst)):
         tree_node=TreeNode()
@@ -34,16 +34,16 @@ def create_tree(head):
             tree[i].left,tree[i].right=tree[2*i+1],tree[2*i+2]
         except IndexError:
             tree[i].left=tree[2*i+1]
-    tree_head=tree[0]
-    return tree_head
+    tree_tree_root=tree[0]
+    return tree_tree_root
 
 def make_tree():
     ch=int(input("Enter the number of elements: "))
-    head=tail=None
+    tree_root=tail=None
     while ch>0:
         data=input('Enter the data: ')
-        head,tail=insert_end(head,tail,data)
+        tree_root,tail=insert_end(tree_root,tail,data)
         ch-=1
 
-    tree_head=create_tree(head)
-    return  tree_head
+    tree_tree_root=create_tree(tree_root)
+    return  tree_tree_root
