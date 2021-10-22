@@ -34,8 +34,8 @@ def create_tree(tree_root):
             tree[i].left,tree[i].right=tree[2*i+1],tree[2*i+2]
         except IndexError:
             tree[i].left=tree[2*i+1]
-    tree_tree_root=tree[0]
-    return tree_tree_root
+    tree_root=tree[0]
+    return tree_root
 
 def make_tree():
     ch=int(input("Enter the number of elements: "))
@@ -45,5 +45,5 @@ def make_tree():
         tree_root,tail=insert_end(tree_root,tail,data)
         ch-=1
 
-    tree_tree_root=create_tree(tree_root)
-    return  tree_tree_root
+    tree_root=create_tree(tree_root)
+    return  tree_root
