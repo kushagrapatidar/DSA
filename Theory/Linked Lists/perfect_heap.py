@@ -1,3 +1,4 @@
+#Function to check the validity of the given heap as perfect or not
 def check_heap(tree_root):
     if tree_root==None:
         return False
