@@ -3,14 +3,16 @@ def check_heap(tree_root):
     left=tree_root.left
     right=tree_root.right
 
-    if left.left!=None and left.right!=None and right.left!=None and right.right!=None:
-        if tree_root==None:
-            return True
+    try:
+        if left.left!=None and left.right!=None and right.left!=None and right.right!=None:
+            if tree_root==None:
+                return True
     
-        if left==None and right==None:
-            return True
+            if left==None and right==None:
+                return True
     
-        if left!=None and right!=None:
-            return (check_heap(left) and check_heap(right))
-    
-    return False
+            if left!=None and right!=None:
+                return (check_heap(left) and check_heap(right))
+        return False
+    except:
+        return False
