@@ -81,15 +81,21 @@ if True:
     def print_tree(tree_root):
         left=tree_root.left
         right=tree_root.right
-        print(tree_root.data)
+        
+        if left!=None:
+            print(left.data,end=" ")
+        if right!=None:
+            print(right.data,end=" ")
+        
         if left!=None:
             print_tree(left)
-        print("\n")
+        print("\r")
         if right!=None:
             print_tree(right)
 
     tree_root=make_tree()
     tree_root=heapyfy(tree_root)
+    print(tree_root.data)
     print_tree(tree_root)
     find_height_ll(tree_root)
     #Test Cases:
