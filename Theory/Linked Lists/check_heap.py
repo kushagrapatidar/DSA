@@ -6,11 +6,13 @@ def isperfect(tree_root):
     val=(max_height==min_height)
     if val:
         print("Perfect Tree")
+        return True
     else:
         print("Not Perfect Tree")
+        return False
 
-#Function to check if the tree is full or not
-def isfull(tree_root):
+#Functions to check if the tree is full or not
+def check_full(tree_root):
     if tree_root==None:
         return False
     
@@ -18,6 +20,15 @@ def isfull(tree_root):
         return True
     
     if tree_root.left!=None and tree_root.right!=None:
-        return (isfull(tree_root.left) and isfull(tree_root.right))
+        return (check_full(tree_root.left) and check_full(tree_root.right))
     
     return False
+
+def isfull(tree_root):
+    val=check_full(tree_root)
+    if val:
+        print("Tree if Full")
+        return True
+    else:
+        print("Tree is not Full")
+        return False
