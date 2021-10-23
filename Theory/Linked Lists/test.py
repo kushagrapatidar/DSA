@@ -100,10 +100,12 @@ if True:
     #print(tree_root.data)
     #print_tree(tree_root)
     max_height,min_height=find_height_ll(tree_root)
+
     if max_height==-1:
         print("There are no Nodes")     
     else:
         print(f"Maximum and Minimum heights of the tree are {max_height,min_height}")
+    
     CH.isfull(tree_root)
     CH.isperfect(tree_root)
     #Test Cases:
