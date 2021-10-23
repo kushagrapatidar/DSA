@@ -98,13 +98,7 @@ if True:
     tree_root=heapyfy(tree_root)
     #print(tree_root.data)
     #print_tree(tree_root)
-    max_height,min_height=find_height_ll(tree_root)
-    
-    val=(max_height==min_height)
-    if val:
-        print("Perfect")
-    else:
-        print("Not Perfect")
+    find_height_ll(tree_root)
     #Test Cases:
         #arr=[2,3,9,4]
         #max_height = 2, min_height=1
