@@ -78,6 +78,7 @@ if True:
     from tree import make_tree
     from binary_tree_height import find_height_ll
     from heapyfy import heapyfy
+    import check_heap as CH
     def print_tree(tree_root):
         left=tree_root.left
         right=tree_root.right
@@ -103,7 +104,8 @@ if True:
         print("There are no Nodes")     
     else:
         print(f"Maximum and Minimum heights of the tree are {max_height,min_height}")
-        
+    CH.isfull(tree_root)
+    CH.isperfect(tree_root)
     #Test Cases:
         #arr=[2,3,9,4]
         #max_height = 2, min_height=1
