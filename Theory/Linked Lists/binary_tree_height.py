@@ -9,9 +9,6 @@ def find_height_ll(tree_root):
         if right!=None:
             min_height+=1
             right=right.right
-            
-    if min_height==0 and max_height>0:
-        min_height=max_height
 
     if max_height==-1:
         print("There are no Nodes")
