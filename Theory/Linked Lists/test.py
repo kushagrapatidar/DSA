@@ -99,6 +99,11 @@ if True:
     #print(tree_root.data)
     #print_tree(tree_root)
     max_height,min_height=find_height_ll(tree_root)
+    if max_height==-1:
+        print("There are no Nodes")     
+    else:
+        print(f"Maximum and Minimum heights of the tree are {max_height,min_height}")
+        
     #Test Cases:
         #arr=[2,3,9,4]
         #max_height = 2, min_height=1
