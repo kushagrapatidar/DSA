@@ -73,7 +73,7 @@
         #Trav
     #'''
 
-#Driver Code: Binary Tree Height
+#Driver Code: Tree Operations
 if True:
     from tree import make_tree
     from binary_tree_height import find_height_ll
@@ -96,9 +96,13 @@ if True:
             print_tree(right)
 
     tree_root=make_tree()
+    
+    #Heapyfy Operation
     tree_root=heapyfy(tree_root)
     #print(tree_root.data)
     #print_tree(tree_root)
+    
+    #Heights of a Binary Tree Operation
     max_height,min_height=find_height_ll(tree_root)
 
     if max_height==-1:
@@ -106,6 +110,7 @@ if True:
     else:
         print(f"Maximum and Minimum heights of the tree are {max_height,min_height}")
     
+    #Full and Perfect Binary Trees
     CH.isfull(tree_root)
     CH.isperfect(tree_root)
     #Test Cases:
