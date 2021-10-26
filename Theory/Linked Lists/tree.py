@@ -20,6 +20,22 @@ def set_pos(head):
         except AttributeError:
             continue
 
+def get_tree(tree_root,tree):
+    if tree_root.next!=None:
+        tree=get_tree(tree_root.left,tree)
+        tree=get_tree(tree_root.right,tree)
+    else:
+        tree[tree_root.pos]=tree_root
+    return tree
+
+def print_tree(tree_root):
+    tree=[]
+    tree=get_tree(tree_root,tree)
+    i=0
+    while i<len(tree):
+        print(tree[i:pow(2,i)])
+        i+=pow(2,i)
+        
 #Insert Operations    
 def insert_end(head,tail,data):
     newNode=Node()
