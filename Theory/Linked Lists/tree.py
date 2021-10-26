@@ -22,10 +22,10 @@ def set_pos(head):
 
 def get_tree(tree_root,tree):
     if tree_root.next!=None:
-        tree=get_tree(tree_root.left,tree)
         tree=get_tree(tree_root.right,tree)
+        tree=get_tree(tree_root.left,tree)
     else:
-        tree[tree_root.pos]=tree_root
+        tree.append(tree_root)
     return tree
 
 def print_tree(tree_root):
