@@ -79,30 +79,11 @@ if True:
     from binary_tree_height import find_height_ll
     from heapyfy import heapyfy
     import check_heap as CH
-    
-    #Print Tree Function
-    def print_tree(tree_root):
-        left=tree_root.left
-        right=tree_root.right
-        
-        if left!=None:
-            print(left.data,end=" ")
-        if right!=None:
-            print(right.data,end=" ")
-        
-        print("\n")
-        if left!=None:
-            print_tree(left)
-        print("\n")
-        if right!=None:
-            print_tree(right)
 
     tree_root=make_tree()
     
     #Heapyfy Operation
     tree_root=heapyfy(tree_root)
-    #print(tree_root.data)
-    #print_tree(tree_root)
     
     #Heights of a Binary Tree Operation
     max_height,min_height=find_height_ll(tree_root)
