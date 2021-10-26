@@ -33,9 +33,9 @@ def print_tree(tree_root):
     tree=get_tree(tree_root,tree)
     i=0
     while i<len(tree):
-        print(tree[i:pow(2,i)])
+        print(f"{tree[i:pow(2,i)]}")
         i+=pow(2,i)
-        
+
 #Insert Operations    
 def insert_end(head,tail,data):
     newNode=Node()
