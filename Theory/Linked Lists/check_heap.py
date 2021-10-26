@@ -32,3 +32,4 @@ def isfull(tree_root):
     else:
         print("Tree is not Full")
         return False
+
