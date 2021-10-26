@@ -75,7 +75,7 @@
 
 #Driver Code: Tree Operations
 if True:
-    from tree import make_tree
+    from tree import make_tree,print_tree
     from binary_tree_height import find_height_ll
     from heapyfy import heapyfy
     import check_heap as CH
@@ -96,6 +96,8 @@ if True:
     #Full and Perfect Binary Trees
     CH.isfull(tree_root)
     CH.isperfect(tree_root)
+
+    print_tree(tree_root)
     #Test Cases:
         #arr=[2,3,9,4]
         #max_height = 2, min_height=1
