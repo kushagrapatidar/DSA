@@ -248,21 +248,18 @@ def insert(head,tail):
 
 #Delete Function
 def delete(head,tail):
-    if head==None or tail==None:
-        print('List is empty!!')
-    else:
-        ch=input("Enter the position of deletion: 'B' for Beggining or 'E' for End or Position in numbers greater than or equal to 1: ")
-        try:
-            ch=int(ch)
-            head,tail=delete_bet(head,tail,ch)
-        except ValueError:
-            if ch=='B' or ch=='b':
-                head=delete_beg(head,tail)
-            if ch=='E' or ch=='e':
-                tail=delete_end(head,tail)
+    ch=input("Enter the position of deletion: 'B' for Beggining or 'E' for End or Position in numbers greater than or equal to 1: ")
+    try:
+        ch=int(ch)
+        head,tail=delete_bet(head,tail,ch)
+    except ValueError:
+        if ch=='B' or ch=='b':
+            head=delete_beg(head,tail)
+        if ch=='E' or ch=='e':
+            tail=delete_end(head,tail)
     
-        if head!=None and tail!=None:
-            set_pos(head)
+    if head!=None and tail!=None:
+        set_pos(head)
     return head,tail
 
 ########################################################################################################################################################################
@@ -275,9 +272,12 @@ def call_insert(head,tail):
     return head,tail
 
 def call_delete(head,tail):
-    num=int(input('Enter the number of elements to be deleted: '))
-    for _ in range(num):
-        head,tail=delete(head,tail)
+    if head==None or tail==None:
+        print('List is empty!!')
+    else:
+        num=int(input('Enter the number of elements to be deleted: '))
+        for _ in range(num):
+            head,tail=delete(head,tail)
 
     return head,tail
 
