@@ -20,9 +20,15 @@ def set_pos(head):
         except AttributeError:
             continue
 
+def sort_tree_lst(tree):
+    for i in range(len(tree)):
+        if i!=tree[i].pos:
+            tree[i],tree[tree[i].pos]=tree[tree[i].pos],tree[i]
+
 def get_tree(tree_root,tree):
-    if tree_root.next!=None:
+    if tree_root.right!=None:
         tree=get_tree(tree_root.right,tree)
+    if tree_root.left!=None:
         tree=get_tree(tree_root.left,tree)
     else:
         tree.append(tree_root)
@@ -32,8 +38,11 @@ def print_tree(tree_root):
     tree=[]
     tree=get_tree(tree_root,tree)
     i=0
+    tree=sort_tree_lst(tree)
     while i<len(tree):
-        print(f"{tree[i:pow(2,i)]}")
+        if pow(2,i)<len(tree):
+            for j in range(i,pow(2,i)+1):
+                print(f"{tree[j].data}")
         i+=pow(2,i)
 
 #Insert Operations    
