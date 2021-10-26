@@ -60,6 +60,9 @@ def make_tree():
         head,tail=insert_end(head,tail,data)
         ch-=1
     set_pos(head)
-    
+    temp=head
+    while temp!=None:
+        print(temp.data,":",temp.pos)
+        temp=temp.next
     tree_root=create_tree(head)
     return  tree_root
