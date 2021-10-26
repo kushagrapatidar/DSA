@@ -1,10 +1,24 @@
 class TreeNode:
     data=None
+    pos=None
     right=None
     left=None
 class Node:
     data=None
+    pos=None
     next=None
+
+def set_pos(head):
+    head.pos=1
+    temp=head
+    currPos=1
+    while temp!=None:
+        currPos=temp.pos
+        temp=temp.next
+        try:
+            temp.pos=currPos+1
+        except AttributeError:
+            continue
 
 #Insert Operations    
 def insert_end(head,tail,data):
@@ -27,6 +41,7 @@ def create_tree(tree_root):
     for i in range(len(tree_lst)):
         tree_node=TreeNode()
         tree_node.data=tree_lst[i].data
+        tree_node.pos=tree_lst[i].pos
         tree.append(tree_node)
     #[print(_.data,end=" ") for _ in tree_lst]
     for i in range(len(tree)//2):
@@ -44,6 +59,7 @@ def make_tree():
         data=input('Enter the data: ')
         head,tail=insert_end(head,tail,data)
         ch-=1
-
+    set_pos(head)
+    
     tree_root=create_tree(head)
     return  tree_root
