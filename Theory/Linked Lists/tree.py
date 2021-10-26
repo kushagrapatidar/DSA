@@ -42,7 +42,8 @@ def print_tree(tree_root):
     while i<len(tree):
         if pow(2,i)<len(tree):
             for j in range(i,pow(2,i)+1):
-                print(f"{tree[j].data}")
+                print(f"{tree[j].data}",end=" ")
+            print("\r")
         i+=pow(2,i)
 
 #Insert Operations    
