@@ -74,7 +74,7 @@
     #'''
 
 #Driver Code: Tree Operations
-'''if True:
+if True:
     from tree import make_tree
     from binary_tree_height import find_height_ll
     from heapyfy import heapyfy
@@ -101,14 +101,3 @@
         #max_height = 2, min_height=1
         #arr=[2,3,9,4,5,10,11,6]
         #max_height = 3, min_height = 2 '''
-
-arr=[]
-arr[5]=1
-arr[0]=1
-arr[3]=1
-arr[1]=0
-arr[2]=0
-arr[4]=0
-
-for _ in arr:
-    print(_)
