@@ -106,9 +106,15 @@
 
 tree=[2,3,9,4,5,10,11,6]
 l=0
+i=0
 while l<len(tree):
-    if pow(2,i)<len(tree):
-         j<:
-            print(f"{tree[j]}",end=" ")
-        print("\r")
-    i+=1
+    try:
+        if pow(2,l)<len(tree):
+            j=0
+            while j<pow(2,l):
+                print(f"{tree[i+j]}",end=" ")
+                j+=1
+            print("\r")
+            i=i+j 
+    except IndexError:
+        continue   
