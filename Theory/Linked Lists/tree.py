@@ -1,6 +1,7 @@
 class TreeNode:
     data=None
     pos=None
+    next=None
     right=None
     left=None
 class Node:
@@ -26,12 +27,9 @@ def sort_tree_lst(tree):
             tree[i],tree[tree[i].pos]=tree[tree[i].pos],tree[i]
 
 def get_tree(tree_root,tree):
-    if tree_root.right!=None:
-        tree=get_tree(tree_root.right,tree)
-    if tree_root.left!=None:
-        tree=get_tree(tree_root.left,tree)
-    else:
+    while tree_root!=None:
         tree.append(tree_root)
+        tree_root=tree_root.next
     return tree
 
 def print_tree(tree_root):
@@ -68,6 +66,7 @@ def create_tree(tree_root):
         tree_node=TreeNode()
         tree_node.data=tree_lst[i].data
         tree_node.pos=tree_lst[i].pos
+        tree_node.next=tree_lst[i].next
         tree.append(tree_node)
     #[print(_.data,end=" ") for _ in tree_lst]
     for i in range(len(tree)//2):
