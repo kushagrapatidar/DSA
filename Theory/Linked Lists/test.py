@@ -117,7 +117,7 @@ while l<=max_h:
     k=k-2
     j=0
     while j<pow(2,l) and i+j<len(tree):
-        print(f"{tree[i+j]}",end=" "*l)
+        print(f"{tree[i+j]}",end="   ")
         j+=1
     print("\r")
     i=i+j
