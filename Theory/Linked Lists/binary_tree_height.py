@@ -16,19 +16,18 @@ def find_height_ll(tree_root):
         return max_height,min_height
 
 #Height of a Binary Tree(List)
-def find_height_lst(lst):
+def find_height_lst(tree):
     max_height=min_height=-1
-    for i,j in range(len(lst)//2):
-        if 2*i+1<len(lst):
-            max_height+=1
-            i=2*i+1
-        if 2*j+2<len(lst):
-            min_height+=1
-            j=2*j+2
-    if len(lst)==1:
-        min_height=max_height
-
-    if max_height==-1:
-        return -1,-1
-    else:
-        return max_height,min_height
+    if len(tree)==1:
+        min_height=max_height=0
+    elif len(tree)!=0:
+        for i in range(len(tree)//2):
+            if 2*i+1<len(tree):
+                max_height+=1
+                i=2*i+1
+        for j in range(len(tree//2)):
+            if 2*j+2<len(tree):
+                min_height+=1
+                j=2*j+2
+    
+    return max_height,min_height

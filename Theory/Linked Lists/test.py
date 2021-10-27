@@ -104,17 +104,21 @@
         #arr=[2,3,9,4,5,10,11,6]
         #max_height = 3, min_height = 2 '''
 
+from binary_tree_height import find_height_lst
+
 tree=[2,3,9,4,5,10,11,6]
+max_h,min_h=find_height_lst(tree)
 l=0
 i=0
-while l<len(tree):
+while l<max_h:
     try:
-        if pow(2,l)<len(tree):
+        if i+pow(2,l)<=len(tree):
             j=0
             while j<pow(2,l):
                 print(f"{tree[i+j]}",end=" ")
                 j+=1
             print("\r")
-            i=i+j 
+            i=i+j+1
     except IndexError:
-        continue   
+        continue
+    l=l+1
