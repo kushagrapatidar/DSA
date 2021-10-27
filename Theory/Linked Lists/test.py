@@ -108,17 +108,15 @@ from binary_tree_height import find_height_lst
 
 tree=[2,3,9,4,5,10,11,6]
 max_h,min_h=find_height_lst(tree)
+# print(max_h)
 l=0
 i=0
-while l<max_h:
-    try:
-        if i+pow(2,l)<=len(tree):
-            j=0
-            while j<pow(2,l):
-                print(f"{tree[i+j]}",end=" ")
-                j+=1
-            print("\r")
-            i=i+j+1
-    except IndexError:
-        continue
+while l<=max_h:
+    j=0
+    while j<pow(2,l) and i+j<len(tree):
+        print(f"{tree[i+j]}",end=" ")
+        j+=1
+    print("\r")
+    i=i+j
+
     l=l+1

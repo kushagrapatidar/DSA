@@ -25,7 +25,7 @@ def find_height_lst(tree):
             if 2*i+1<len(tree):
                 max_height+=1
                 i=2*i+1
-        for j in range(len(tree//2)):
+        for j in range(len(tree)//2):
             if 2*j+2<len(tree):
                 min_height+=1
                 j=2*j+2
