@@ -111,7 +111,10 @@ max_h,min_h=find_height_lst(tree)
 # print(max_h)
 l=0
 i=0
+k=2*pow(2,max_h)-1
 while l<=max_h:
+    print(' '*k,end="")
+    k=k-2
     j=0
     while j<pow(2,l) and i+j<len(tree):
         print(f"{tree[i+j]}",end=" ")
