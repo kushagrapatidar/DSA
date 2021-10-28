@@ -1,15 +1,15 @@
 #N-Queens problem
 def check_rows(board,N,c):
     for i in range(N):
-        if board[i][c]!=1:
-            return True
-    return False
+        if board[i][c]==1:
+            return False
+    return True
 
 def check_colms(board,N,r):
     for j in range(N):
-        if board[r][j]!=1:
-            return True
-    return False
+        if board[r][j]==1:
+            return False
+    return True
 
 def soln_nqueens(board,N):
     for i in range(N):
