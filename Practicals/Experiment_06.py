@@ -31,4 +31,4 @@ if True:
     # print(f"\n{len(graph)}\n")
 
     shortest_path=floyd_warshall(graph)
-    print_graph(graph)
+    print_graph(shortest_path)
