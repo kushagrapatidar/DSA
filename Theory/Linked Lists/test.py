@@ -74,7 +74,7 @@
     #'''
 
 #Driver Code: Tree Operations
-'''if True:
+if True:
     from tree import make_tree,print_tree
     from binary_tree_height import find_height_ll
     from heapyfy import heapyfy
@@ -102,24 +102,24 @@
         #arr=[2,3,9,4]
         #max_height = 2, min_height=1
         #arr=[2,3,9,4,5,10,11,6]
-        #max_height = 3, min_height = 2 '''
+        #max_height = 3, min_height = 2
 
-from binary_tree_height import find_height_lst
 
-tree=[2,3,9,4,5,10,11,6]
-max_h,min_h=find_height_lst(tree)
-# print(max_h)
-l=0
-i=0
-k=2*pow(2,max_h)-1
-while l<=max_h:
-    print(' '*(k+1),end=" ")
-    k=k-2
-    j=0
-    while j<pow(2,l) and i+j<len(tree):
-        print(f"{tree[i+j]}",end="   ")
-        j+=1
-    print("\r")
-    i=i+j
+# from binary_tree_height import find_height_lst
+# tree=[2,3,9,4,5,10,11,6]
+# max_h,min_h=find_height_lst(tree)
+# # print(max_h)
+# l=0
+# i=0
+# k=2*pow(2,max_h)-1
+# while l<=max_h:
+#     print(' '*(k+1),end=" ")
+#     k=k-2
+#     j=0
+#     while j<pow(2,l) and i+j<len(tree):
+#         print(f"{tree[i+j]}",end="   ")
+#         j+=1
+#     print("\r")
+#     i=i+j
 
-    l=l+1
+#     l=l+1
