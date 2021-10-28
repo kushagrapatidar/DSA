@@ -8,10 +8,11 @@ def floyd_warshall(A):
 
     return A
 INF=float('INF')
-A= {{0,5,INF,10},
-    {INF,0,3,INF},
-    {INF,INF,0,1},
-    {INF,INF,INF,0}}
+A= [[0,5,INF,10],
+    [INF,0,3,INF],
+    [INF,INF,0,1],
+    [INF,INF,INF,0]]
+    
 print(A,"\n")
 A=floyd_warshall(A)
 print(A)
