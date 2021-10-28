@@ -11,10 +11,15 @@ def check_colms(board,N,r):
             return False
     return True
 
+def check_diag(board,N,i,j):
+    if board[i-1][j-1]==1 or board[i+1][j+1]==1 or board[i-1][j+1]==1 or board[i+1][j-1]==1:
+        return False
+    return True
+
 def soln_nqueens(board,N):
     for i in range(N):
         for j in range(N):
-            if check_rows(board,N,j) and check_colms(board,N,i):
+            if check_rows(board,N,j) and check_colms(board,N,i) and check_diag(board,N,i,j):
                 board[i][j]=1
     return board
 
