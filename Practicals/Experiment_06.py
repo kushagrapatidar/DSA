@@ -14,9 +14,9 @@ def print_graph(graph):
     for i in range(n):
         for j in range(n):
             if graph[i][j]==float('inf'):
-                print('INF',end=" ")
+                print('INF',end="  ")
             else:
-                print(f'  {graph[i][j]}',end=" ")
+                print(f'  {graph[i][j]}',end="  ")
         print("\n")
 
 #Driver Code
