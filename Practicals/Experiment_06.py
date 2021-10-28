@@ -28,7 +28,7 @@ if True:
         [INF,INF,INF,0]]
 
     print_graph(graph)
-    print(f"\n{len(graph)}\n")
+    # print(f"\n{len(graph)}\n")
 
     graph=floyd_warshall(graph)
     print_graph(graph)
