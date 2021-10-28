@@ -1,4 +1,4 @@
-#Ak[i,j]=min{A[i,j],A[i,k]+A[k,j]}
+#Base Logic: Ak[i,j]=min{A[i,j],A[i,k]+A[k,j]}
 def floyd_warshall(graph):
     n=len(graph)
     for k in range(n):
