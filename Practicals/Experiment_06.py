@@ -16,7 +16,7 @@ def print_graph(graph):
             if graph[i][j]==float('inf'):
                 print('INF',end=" ")
             else:
-                print(A[i][j],end=" ")
+                print(graph[i][j],end=" ")
         print("\n")
 
 INF=float('INF')
@@ -26,7 +26,7 @@ graph= [[0,5,INF,10],
     [INF,INF,INF,0]]
 
 print_graph(graph)
-print(f"\n{len(A)}\n")
+print(f"\n{len(graph)}\n")
 
 graph=floyd_warshall(graph)
 print_graph(graph)
