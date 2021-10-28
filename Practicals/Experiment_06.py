@@ -16,7 +16,7 @@ def print_graph(graph):
             if graph[i][j]==float('inf'):
                 print('INF',end=" ")
             else:
-                print(graph[i][j],end=" ")
+                print(f'  {graph[i][j]}',end=" ")
         print("\n")
 
 #Driver Code
