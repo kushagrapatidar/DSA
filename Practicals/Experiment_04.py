@@ -14,10 +14,9 @@ def check_colms(board,N,r):
 def check_diag(board,N,i,j):
     if 0<i<N-1 and 0<j<N-1 and (board[i-1][j-1]==1 or board[i+1][j+1]==1 or board[i-1][j+1]==1 or board[i+1][j-1]==1):
         return False
-    elif (i==0 or i==N):
-        if i==0 and 0<j<N and board[i-1][j+1]==1:
-            return False
-            #CONTINUE HERE
+    elif (i==0 and 0<j<N and board[i-1][j+1]==1) or (i==N and 0<j<N and board[i-1][j-1]==1):
+        return False
+        #CONTINUE HERE
         
     return True
 
