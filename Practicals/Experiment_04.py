@@ -48,8 +48,8 @@ def soln_nqueens(board,N):
         if N==len(board):
             board[0][1]=1
             board=set_row_colm(board,0,1)
-            print_board(board,len(board))
             board=set_diag(board,0,1)
+            #print_board(board,len(board))
         
         for i in range(len(board)):
             if 1 not in board[i]:
@@ -57,22 +57,21 @@ def soln_nqueens(board,N):
                     if board[i][j]!=1 and board[i][j]!='O':
                         board[i][j]=1
                         board=set_row_colm(board,i,j)
-                        print_board(board,len(board))
                         board=set_diag(board,i,j)
+                        #print_board(board,len(board))
                         break
                 break
         board=soln_nqueens(board,N-1)
     return board    
 
 def print_board(board,N):
-    # for i in range(N):
-    #     for j in range(N):
-    #         if board[i][j]=='O':
-    #             board[i][j]=0
     print('\n')
     for i in range(N):
         for j in range(N):
-            print(board[i][j],end="  ")
+            if board[i][j]=='O':
+                print("\033[1;34;40m \u2587",end="  ")
+            if board[i][j]==1:
+                print("\033[1;37;40m\u2655",end="   ")
         print('\n')
 
 #Driver Code
@@ -87,4 +86,4 @@ if True:
     
     # print_board(board,N)
     board=soln_nqueens(board,N)
-    print_board(board,N)
+    print_board(board,len(board))
