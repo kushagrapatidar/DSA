@@ -44,23 +44,25 @@ def set_diag(board,i,j):
             board[tempi][tempj]='O'
         tempi-=1
         tempj-=1
-
+    
+    print(tempi,tempj)
     tempi,tempj=i,j
-    while tempi<=N and tempj<=N:
+    print(tempi,tempj)
+    while 0<=tempi<=N and 0<=tempj<=N:
         if board[tempi][tempj]!=1:
             board[tempi][tempj]='O'
         tempi+=1
         tempj+=1
 
     tempi,tempj=i,j
-    while tempi<=N and tempj>=0:
+    while 0<=tempi<=N and tempj>=0:
         if board[tempi][tempj]!=1:
             board[tempi][tempj]='O'
         tempi+=1
         tempj-=1
 
     tempi,tempj=i,j
-    while tempi>=0 and tempj<=N:
+    while tempi>=0 and 0<=tempj<=N:
         if board[tempi][tempj]!=1:
             board[tempi][tempj]='O'
         tempi-=1
