@@ -39,6 +39,7 @@ def set_row_colm(board,i,j):
 def set_diag(board,i,j):
 
     tempi,tempj=i,j
+    print(tempi,tempj)
     while tempi>=0 and tempj>=0:
         if board[tempi][tempj]!=1:
             board[tempi][tempj]='O'
@@ -48,21 +49,21 @@ def set_diag(board,i,j):
     print(tempi,tempj)
     tempi,tempj=i,j
     print(tempi,tempj)
-    while 0<=tempi<=N and 0<=tempj<=N:
+    while 0<=tempi<N and 0<=tempj<N:
         if board[tempi][tempj]!=1:
             board[tempi][tempj]='O'
         tempi+=1
         tempj+=1
 
     tempi,tempj=i,j
-    while 0<=tempi<=N and tempj>=0:
+    while 0<=tempi<N and tempj>=0:
         if board[tempi][tempj]!=1:
             board[tempi][tempj]='O'
         tempi+=1
         tempj-=1
 
     tempi,tempj=i,j
-    while tempi>=0 and 0<=tempj<=N:
+    while tempi>=0 and 0<=tempj<N:
         if board[tempi][tempj]!=1:
             board[tempi][tempj]='O'
         tempi-=1
@@ -72,12 +73,14 @@ def set_diag(board,i,j):
 
 def soln_nqueens(board,N):
     if N>0:
+        board[0][1]=1
         for i in range(len(board)):
             if 1 not in board[i]:
                 for j in range(len(board)):
-                    if board[i][j]!=1:
+                    if board[i][j]!=1 and board[i][j]!='O':
                         board[i][j]=1
                         board=set_row_colm(board,i,j)
+                        print_board(board,len(board))
                         board=set_diag(board,i,j)
                         break
                 break
@@ -85,10 +88,10 @@ def soln_nqueens(board,N):
     return board    
 
 def print_board(board,N):
-    for i in range(N):
-        for j in range(N):
-            if board[i][j]=='O':
-                board[i][j]=0
+    # for i in range(N):
+    #     for j in range(N):
+    #         if board[i][j]=='O':
+    #             board[i][j]=0
     print('\n')
     for i in range(N):
         for j in range(N):
