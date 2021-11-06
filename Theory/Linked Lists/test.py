@@ -107,18 +107,18 @@
 #Tree printing algo Dev.
 if True:
     from binary_tree_height import find_height_lst
-    tree=[2,3,9,4,5,10,11,6]
+    tree=[2,3,9,4,5,10,11,6,1,7,8,9,12,13,14]
     max_h,min_h=find_height_lst(tree)
     # print(max_h)
     l=0
     i=0
-    k=2*pow(2,max_h)-1
+    k=2*pow(2,max_h-1)-1
     while l<=max_h:
-        print(' '*(k+1),end=" ")
+        #print(' '*(k+1),end=" ")
         k=k-2
         j=0
         while j<pow(2,l) and i+j<len(tree):
-            print(f"{tree[i+j]}",end="   ")
+            print(f"{tree[i+j]}",end=" ")
             j+=1
         print("\r")
         i=i+j
