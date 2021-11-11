@@ -42,7 +42,7 @@ if True:
            [0,0,0,1],
            [0,1,1,0]]
     print_graph(graph)
-    print("\033[0;37;40m")
+    print("\033[1;37;40m")
     
     if check_connectivity(graph):
         print('The graph is strongly connected.')
