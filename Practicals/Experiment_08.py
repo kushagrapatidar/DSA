@@ -20,7 +20,7 @@ def insert(key,root=None):
 def inorder(root):
     if root:
         inorder(root.left)
-        print(root.val)
+        print(root.data)
         inorder(root.right)
 
 r = insert(50)
