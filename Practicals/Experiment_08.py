@@ -19,9 +19,9 @@ def insert(key,root=None):
 
 def printBST_incr(root):
     if root:
-        inorder(root.left)
+        printBST_incr(root.left)
         print(root.data)
-        inorder(root.right)
+        printBST_incr(root.right)
 
 n=int(input('Enter the number of nodes: '))
 r=None
