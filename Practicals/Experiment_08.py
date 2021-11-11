@@ -23,21 +23,23 @@ def printBST_incr(root):
         print(root.data)
         printBST_incr(root.right)
 
-n=int(input('Enter the number of nodes: '))
-r=None
-for i in range(n):
-    if r==None:
-        r=insert(int(input('Enter Node data: ')))
-    else:
-        insert(int(input('Enter Node data: ')),r)
-print('\n')
-printBST_incr(r)
-#Test Case
-    # r=insert(50)
-    # insert(30,r)
-    # insert(20,r)
-    # insert(40,r)
-    # insert(70,r)
-    # insert(60,r)
-    # insert(80,r)
+#Driver Code
+if True:
+    n=int(input('Enter the number of nodes: '))
+    r=None
+    for i in range(n):
+        if r==None:
+            r=insert(int(input('Enter Node data: ')))
+        else:
+            insert(int(input('Enter Node data: ')),r)
+    print('\n')
+    printBST_incr(r)
+    #Test Case
+        # r=insert(50)
+        # insert(30,r)
+        # insert(20,r)
+        # insert(40,r)
+        # insert(70,r)
+        # insert(60,r)
+        # insert(80,r)
 
