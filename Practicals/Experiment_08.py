@@ -30,3 +30,5 @@ r = insert(40,r)
 r = insert(70,r)
 r = insert(60,r)
 r = insert(80,r)
+
+inorder(r)
