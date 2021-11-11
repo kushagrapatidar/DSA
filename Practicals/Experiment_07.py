@@ -1,22 +1,21 @@
 def print_graph(graph):
     n=len(graph)
-    for i in range(n):
-        for j in range(n):
-            if graph[i][j]==float('inf'):
-                print('INF',end="  ")
-            else:
-                print(f'  {graph[i][j]}',end="  ")
+    print('   ',end='')
+    [print(x,end="  ") for x in range(1,n+1)]
+    print('\n')
+    for i in range(1,n+1):
+        print(i,end="  ")
+            
+        for j in range(1,n+1):
+            print(f'{graph[i-1][j-1]}',end="  ")
         print("\n")
 
 #Driver Code
 if True:
-    INF=float('INF')
-    #A0 passing
-    graph= [[0,3,INF,7],
-        [8,0,2,INF],
-        [5,INF,0,1],
-        [2,INF,INF,0]]
-    # print(graph[0][2])
+    graph=[[0,0,0,1],
+           [1,0,0,0],
+           [0,0,0,1],
+           [0,1,1,0]]
     print_graph(graph)
     print("\n")
-    # print(f"\n{len(graph)}\n")
+ 
