@@ -17,7 +17,7 @@ def insert(key,root=None):
             root.left=insert(key,root.left)
     return root
 
-def inorder(root):
+def printBST_incr(root):
     if root:
         inorder(root.left)
         print(root.data)
@@ -31,7 +31,7 @@ for i in range(n):
     else:
         insert(int(input('Enter Node data: ')),r)
 print('\n')
-inorder(r)
+printBST_incr(r)
 #Test Case
     # r=insert(50)
     # insert(30,r)
