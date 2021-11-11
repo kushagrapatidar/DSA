@@ -105,7 +105,7 @@
     #     #max_height = 3, min_height = 2
 
 #Tree printing algo Dev.
-if True:
+'''if True:
     from binary_tree_height import find_height_lst
     tree=[2,3,9,4,5,10,11,6,1,7,8,9,12,13,14]
     max_h,min_h=find_height_lst(tree)
@@ -124,3 +124,4 @@ if True:
         i=i+j
 
         l=l+1
+    #'''
