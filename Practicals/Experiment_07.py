@@ -1,9 +1,10 @@
-
-def get_node_connectivity(i,index,graph,lst=None):
+def get_node_connectivity(i,index,graph,lst=None): #Check Here
     if lst!=None and i==index:
         return lst
+    
     if lst==None:
         lst=list()
+    
     if i not in lst:
         lst.append(i)
     
@@ -48,4 +49,4 @@ if True:
         print('The graph is strongly connected.')
     else:
         print('The graph is not strongly connected.')
- 
+    print("\033[0;37;40m")
