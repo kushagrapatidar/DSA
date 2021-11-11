@@ -15,3 +15,5 @@ def insert(key,root=None):
             root.right=insert(key,root.right)
         else:
             root.left=insert(key,root.left)
+    return root
+
