@@ -23,12 +23,20 @@ def inorder(root):
         print(root.data)
         inorder(root.right)
 
-r = insert(50)
-r = insert(30,r)
-r = insert(20,r)
-r = insert(40,r)
-r = insert(70,r)
-r = insert(60,r)
-r = insert(80,r)
+n=int(input('Enter the number of nodes:'))
+r=None
+for i in range(n):
+    if r==None:
+        r=insert(int(input()))
+    else:
+        insert(int(input()),r)
 
 inorder(r)
+# r=insert(50)
+# insert(30,r)
+# insert(20,r)
+# insert(40,r)
+# insert(70,r)
+# insert(60,r)
+# insert(80,r)
+
