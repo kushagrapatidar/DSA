@@ -17,11 +17,11 @@ def insert(key,root=None):
             root.left=insert(key,root.left)
     return root
 
-def printBST_incr(root):
+def printbst_incr(root):
     if root:
-        printBST_incr(root.left)
+        printbst_incr(root.left)
         print(root.data)
-        printBST_incr(root.right)
+        printbst_incr(root.right)
 
 #Driver Code
 if True:
@@ -33,7 +33,7 @@ if True:
         else:
             insert(int(input('Enter Node data: ')),r)
     print('\n')
-    printBST_incr(r)
+    printbst_incr(r)
     #Test Case
         # r=insert(50)
         # insert(30,r)
