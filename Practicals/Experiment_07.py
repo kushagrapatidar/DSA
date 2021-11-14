@@ -1,28 +1,31 @@
-def get_node_connectivity(i,index,graph,lst=None): #Check Here
-    if lst!=None and i==index:
-        return lst
-    
-    if lst==None:
-        lst=list()
-    
-    if i not in lst:
-        lst.append(i)
-    
-    for j in range(len(graph[i])):
-        if graph[i][j]==1:
-            lst=get_node_connectivity(i,index,graph,lst)
-    return lst
+def get_connectivity_lst(i,lst,lst2):
+    nodes=lst[i]
+    for j in range(len(nodes)):
+        if nodes[j][1] not in lst2:
+            lst2.append(nodes[j][1])
+            lst2=get_connectivity_lst(nodes[j][1],lst,lst2)
+    return lst2
 
 def check_connectivity(graph):
-    bool_val=True
-    lst=list()
+    lst=dict()
     for i in range(len(graph)):
-        lst.append(get_node_connectivity(i,i,graph))
-    for i in range(len(lst)):
-        if len(lst[i])!=len(graph):
-            bool_val=False
-            break
-    return bool_val
+        for j in range(len(graph)):
+            if graph[i][j]==1:
+                if i not in lst.keys():
+                    lst[i]=[[i,j]]
+                else:
+                    lst[i].append([i,j])
+    # print(lst)
+    if len(lst.keys())!=len(graph):
+        return False
+    for i in lst.keys():
+        lst2=list()
+        lst2.append(i)
+        lst2=get_connectivity_lst(i,lst,lst2)
+        # print(lst2)
+        if len(lst2)!=len(graph):
+            return False
+    return True
 
 def print_graph(graph):
     n=len(graph)
@@ -38,10 +41,16 @@ def print_graph(graph):
 
 #Driver Code
 if True:
+    #Strongly Connected Graph
     graph=[[0,0,0,1],
            [1,0,0,0],
            [0,0,0,1],
            [0,1,1,0]]
+    #Connected Graph
+    # graph=[[0,0,0,1],
+    #        [1,0,0,0],
+    #        [0,0,0,1],
+    #        [0,1,0,0]]
     print_graph(graph)
     print("\033[1;37;40m")
     
