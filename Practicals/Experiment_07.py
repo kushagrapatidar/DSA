@@ -26,6 +26,7 @@ def check_connectivity(graph):
         # print(lst2)
         if len(lst2)!=len(graph):
             return False
+        
     return True
 
 def print_graph(graph):
