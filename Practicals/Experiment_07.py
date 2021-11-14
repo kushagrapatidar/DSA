@@ -1,4 +1,6 @@
 def get_connectivity_lst(i,lst,lst2):
+    if i not in lst.keys():
+        return False
     nodes=lst[i]
     for j in range(len(nodes)):
         if nodes[j][1] not in lst2:
@@ -16,8 +18,7 @@ def check_connectivity(graph):
                 else:
                     lst[i].append([i,j])
     # print(lst)
-    if len(lst.keys())!=len(graph):
-        return False
+    
     for i in lst.keys():
         lst2=list()
         lst2.append(i)
