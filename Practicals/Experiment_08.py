@@ -42,4 +42,3 @@ if True:
         # insert(70,r)
         # insert(60,r)
         # insert(80,r)
-
