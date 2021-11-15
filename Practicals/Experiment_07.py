@@ -24,7 +24,7 @@ def check_connectivity(graph):
         lst2.append(i)
         lst2=get_connectivity_lst(i,lst,lst2)
         # print(lst2)
-        if len(lst2)!=len(graph):
+        if lst2==False or len(lst2)!=len(graph):
             return False
         
     return True
@@ -48,17 +48,12 @@ if True:
            [1,0,0,0,0],
            [0,0,0,1,0],
            [0,1,1,0,0],
-           [0,0,0,0,0]]
+           [1,0,0,0,0]]
     #Strongly Connected Graph
     # graph=[[0,0,0,1],
     #        [1,0,0,0],
     #        [0,0,0,1],
     #        [0,1,1,0]]
-    #Connected Graph
-    # graph=[[0,0,0,1],
-    #        [1,0,0,0],
-    #        [0,0,0,1],
-    #        [0,1,0,0]]
     print_graph(graph)
     print("\033[1;37;40m")
     
