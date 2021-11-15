@@ -44,10 +44,16 @@ def print_graph(graph):
 #Driver Code
 if True:
     #Strongly Connected Graph
-    graph=[[0,0,0,1],
-           [1,0,0,0],
-           [0,0,0,1],
-           [0,1,1,0]]
+    graph=[[0,0,0,1,1],
+           [1,0,0,0,0],
+           [0,0,0,1,0],
+           [0,1,1,0,0],
+           [0,0,0,0,0]]
+    #Strongly Connected Graph
+    # graph=[[0,0,0,1],
+    #        [1,0,0,0],
+    #        [0,0,0,1],
+    #        [0,1,1,0]]
     #Connected Graph
     # graph=[[0,0,0,1],
     #        [1,0,0,0],
