@@ -43,16 +43,16 @@ def print_graph(graph):
 #Driver Code
 if True:
     #Strongly Connected Graph
-    # graph=[[0,0,0,1,1],
-    #        [1,0,0,0,0],
-    #        [0,0,0,1,0],
-    #        [0,1,1,0,0],
-    #        [1,0,0,0,0]]
+    graph=[[0,0,0,1,1],
+           [1,0,0,0,0],
+           [0,0,0,1,0],
+           [0,1,1,0,0],
+           [1,0,0,0,0]]
     #Strongly Connected Graph
-    graph=[[0,0,0,1],
-           [1,0,0,0],
-           [0,0,0,1],
-           [0,1,1,0]]
+    # graph=[[0,0,0,1],
+    #        [1,0,0,0],
+    #        [0,0,0,1],
+    #        [0,1,1,0]]
     print_graph(graph)
     print("\033[1;37;40m")
     start=int(input('Enter the starting vertex: '))
