@@ -1,10 +1,14 @@
-start=0
-end=0
-def make_path(i,lst,lst2):
-    
+def get_connectivity_lst(i,lst,lst2):
+    if i not in lst.keys():
+        return False
+    nodes=lst[i]
+    for j in range(len(nodes)):
+        if nodes[j][1] not in lst2:
+            lst2.append(nodes[j][1])
+            lst2=get_connectivity_lst(nodes[j][1],lst,lst2)
     return lst2
 
-def find_path(i,graph):
+def check_connectivity(graph):
     lst=dict()
     for i in range(len(graph)):
         for j in range(len(graph)):
@@ -14,13 +18,16 @@ def find_path(i,graph):
                 else:
                     lst[i].append([i,j])
     print(lst)
-    lst2=list()
-    lst2.append(start)
-    lst2=make_path(start,lst,lst2)
-    # print(lst2)
-    for i in range(len(lst2)):
-        lst2[i]+=1
-    return lst2
+    
+    for i in lst.keys():
+        lst2=list()
+        lst2.append(i)
+        lst2=get_connectivity_lst(i,lst,lst2)
+        print(lst2)
+        if lst2==False or len(lst2)!=len(graph):
+            return False
+        
+    return True
 
 def print_graph(graph):
     n=len(graph)
@@ -49,10 +56,11 @@ if True:
     #        [0,1,1,0]]
     print_graph(graph)
     print("\033[1;37;40m")
-    start=int(input('Enter the starting vertex: '))
-    end=int(input('Enter the ending vertex: '))
-    start,end=start-1,end-1
-    path=find_path(start,graph)
-    print(path)
+    
+    if check_connectivity(graph):
+        print('The graph is strongly connected.')
+    else:
+        print('The graph is not strongly connected.')
     print("\033[0;37;40m")
 
+m

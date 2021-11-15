@@ -17,13 +17,13 @@ def check_connectivity(graph):
                     lst[i]=[[i,j]]
                 else:
                     lst[i].append([i,j])
-    # print(lst)
+    print(lst)
     
     for i in lst.keys():
         lst2=list()
         lst2.append(i)
         lst2=get_connectivity_lst(i,lst,lst2)
-        # print(lst2)
+        print(lst2)
         if lst2==False or len(lst2)!=len(graph):
             return False
         
