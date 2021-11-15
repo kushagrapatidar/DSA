@@ -19,12 +19,13 @@ def find_path(start,end,graph):
                     lst[i]=[[i,j]]
                 else:
                     lst[i].append([i,j])
-    # print(lst)
+    print(lst)
     lst2=list()
     lst2.append(start)
     lst2=make_path(start,end,lst,lst2)
     # print(lst2)
-        
+    for i in range(len(lst2)):
+        lst2[i]+=1
     return lst2
 
 def print_graph(graph):
@@ -42,16 +43,16 @@ def print_graph(graph):
 #Driver Code
 if True:
     #Strongly Connected Graph
-    graph=[[0,0,0,1,1],
-           [1,0,0,0,0],
-           [0,0,0,1,0],
-           [0,1,1,0,0],
-           [1,0,0,0,0]]
+    # graph=[[0,0,0,1,1],
+    #        [1,0,0,0,0],
+    #        [0,0,0,1,0],
+    #        [0,1,1,0,0],
+    #        [1,0,0,0,0]]
     #Strongly Connected Graph
-    # graph=[[0,0,0,1],
-    #        [1,0,0,0],
-    #        [0,0,0,1],
-    #        [0,1,1,0]]
+    graph=[[0,0,0,1],
+           [1,0,0,0],
+           [0,0,0,1],
+           [0,1,1,0]]
     print_graph(graph)
     print("\033[1;37;40m")
     start=int(input('Enter the starting vertex: '))
