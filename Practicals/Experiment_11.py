@@ -1,16 +1,10 @@
-def make_path(start,end,lst,lst2):
-    if start not in lst.keys():
-        return False
-    nodes=lst[start]
-    for j in range(len(nodes)):
-        if nodes[j][1] not in lst2:
-            lst2.append(nodes[j][1])
-            lst2=make_path(nodes[j][1],end,lst,lst2)
-        if end in lst2:
-            return lst2
+start=0
+end=0
+def make_path(i,lst,lst2):
+    
     return lst2
 
-def find_path(start,end,graph):
+def find_path(i,graph):
     lst=dict()
     for i in range(len(graph)):
         for j in range(len(graph)):
@@ -22,7 +16,7 @@ def find_path(start,end,graph):
     print(lst)
     lst2=list()
     lst2.append(start)
-    lst2=make_path(start,end,lst,lst2)
+    lst2=make_path(start,lst,lst2)
     # print(lst2)
     for i in range(len(lst2)):
         lst2[i]+=1
@@ -57,7 +51,8 @@ if True:
     print("\033[1;37;40m")
     start=int(input('Enter the starting vertex: '))
     end=int(input('Enter the ending vertex: '))
-    path=find_path(start-1,end-1,graph)
+    start,end=start-1,end-1
+    path=find_path(start,graph)
     print(path)
     print("\033[0;37;40m")
 
