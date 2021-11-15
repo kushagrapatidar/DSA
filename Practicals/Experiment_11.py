@@ -25,7 +25,7 @@ def find_path(start,end,graph):
     lst2=make_path(start,end,lst,lst2)
     # print(lst2)
         
-    return True
+    return lst2
 
 def print_graph(graph):
     n=len(graph)
@@ -56,7 +56,7 @@ if True:
     print("\033[1;37;40m")
     start=int(input('Enter the starting vertex: '))
     end=int(input('Enter the ending vertex: '))
-    path=find_path(start,end,graph)
+    path=find_path(start-1,end-1,graph)
     print(path)
     print("\033[0;37;40m")
 
