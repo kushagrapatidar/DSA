@@ -1,11 +1,31 @@
-#Driver Code: Binary Tree Height
-if True:
-    from binary_tree_height import find_height
+class Node:
+    def __init__(self, key):
+        self.left = None
+        self.right = None
+        self.val = key
+        
+def printPostorder(root):
+ 
+    if root:
+ 
+        # First recur on left child
+        printPostorder(root.left)
+ 
+        # the recur on right child
+        printPostorder(root.right)
+ 
+        # now print the data of node
+        print(root.val)
 
-    arr=[2,3,9,4,5] #height = 2 , (2->3->4,5)
-    height=find_height(arr,0)
-    print(f'Height of the tree {arr} is {height}')
+root = Node("K")
+root.left = Node("A")
+root.right = Node("H")
+root.left.left = Node("E")
+root.right.left = Node("F")
+root.right.right = Node("D")
+root.right.right.right = Node("G")
+root.left.right = Node("C")
+root.right.right.right.left = Node("B")
+ 
 
-    arr=[2,3,9,4,5,10,11,6] #height = 3, (2->3->4->6)
-    height=find_height(arr,0)
-    print(f'\nHeight of the tree {arr} is {height}')#'''
+printPostorder(root)
