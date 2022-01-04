@@ -20,7 +20,7 @@ def eval(op,stack):
 #Driver Code
 if True:
     #Valid Expression Test Case
-    expr="231*+9-"
+    expr="823^/23*+51--"
     #expr="12+34*-"
     
     #Invalid Expression Test Cases
@@ -40,6 +40,7 @@ if True:
                 print("Invalid Postfix Expression!!")
                 x=-1
                 break
+        print(stack)
 
     if len(stack)>1:
         print("Invalid Postfix Expression!!")
