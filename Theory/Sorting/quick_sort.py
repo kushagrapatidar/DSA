@@ -25,16 +25,15 @@ def quicksort(start,end,arr):
     if start<end: #Function will execute only if there are atleast 2 elements in arr
         
         piv_index=partition(start,end,arr) #Pivot element index obtained from Partition Function
-
+        print(arr)
         #Sorting the partitions on both the sides of pivot element
         quicksort(start,piv_index-1,arr) #Sorting the left half
         quicksort(piv_index+1,end,arr)   #Sorting the right half
         
     return arr
 #Driver Code
-'''
-if True:
-    arr=[7,6,10,5,9,2,213,1,15,10,25,7]
+if __name__=="__main__":
+    arr=[50,40,20,60,80,100,45,70,105,30,90,75]
     print("Given array is\n",arr)
     arr=quicksort(0,len(arr)-1,arr).copy()
-    print("Sorted array is:\n",arr)'''
+    print("Sorted array is:\n",arr)
